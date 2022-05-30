@@ -37,11 +37,15 @@ imageAdded = """`تمت إضافة {} صفحة / إلى ملف pdf ..`🤓
 
 
 forceSubMsg = """مرحبا [{}](tg://user?id={}) 🤚🏻..!!
-يجب عليك انضمام الى قناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :👉👉 @i2pdfbotchannel
+يجب عليك إنضمام الى هذه القناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :
+👇👇👇👇👇👇
+ @i2pdfbotchannel
 وبعدها ارجع للبوت واضغط هذا الامر /start او من ازار اضغط تحديث
 لمتابعة كافة تحديثات البوت
 
-You must join a channel in order to use the bot. Subscribe to this channel: 👉👉 @i2pdfbotchannel
+You must join a channel in order to use the bot. Subscribe to this channel: 
+👇👇👇👇
+ @i2pdfbotchannel
 Then go back to the bot and press this command / start, or from the buttons, press update
 To follow all bot updates`
 """
