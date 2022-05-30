@@ -67,7 +67,7 @@ Name(أسم ): 𝗧𝗔𝗛𝗘𝗥 𝗔𝗟𝗡𝗢𝗢𝗥𝗜
 Username(معرف): @ta_ja199 
 Instagram(انستا)🎛:[Click here | إضغط  هنا](https://www.instagram.com/ta_9_ja/)
 Website(موقع)🌐:موسوعة المهندس الكهربائي
-Bot Extracte zip&rar(بوت استخراج zip&rar)🌐:unzipunrarprobot
+Bot Extracte zip&rar(بوت استخراج zip&rar)🌐:@unzipunrarprobot
 """
 
 
