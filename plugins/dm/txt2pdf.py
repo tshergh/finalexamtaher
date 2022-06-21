@@ -231,6 +231,7 @@ async def _pgSize(bot, callbackQuery):
         await callbackQuery.message.reply_document(
             file_name="txt&DevTaher.pdf", quote=True,
             document=open(f"{callbackQuery.message.message_id}.pdf", "rb"),
+            caption=f"`تم تحويل الرسالة  الى pdf ` \n`convert  message to pdf`\n**by: @i2pdfbot**",
             thumb=PDF_THUMBNAIL
         )
         await processMessage.delete()
