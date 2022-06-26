@@ -295,11 +295,11 @@ async def start(bot, message):
                 if userStatus.status == 'banned':
                      await message.reply_photo(
                                               photo = BANNED_PIC,
-                                              caption = "For Some Reason You Can't Use This Bot"
-                                                        "\n\nContact Bot Owner 🤐",
+                                              caption = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب\nFor Some Reason You Can't Use This Bot"
+                                                        "\nاتصل بمالك البوت 🤐\nContact Bot Owner 🤐",
                                               reply_markup = InlineKeyboardMarkup(
-                                                             [[InlineKeyboardButton("🤠 OWNER 🤠",
-                                                                 url = "https://t.me/nabilanavab")]]
+                                                    [[InlineKeyboardButton("المالك Owner 🎊",
+                                                      url="https://t.me/ta_ja199")]]
                                               ))
                      return
             except Exception as e:
@@ -313,15 +313,14 @@ async def start(bot, message):
                                                                      message.from_user.first_name,
                                                                      message.from_user.id
                                                                      ),
-                                         reply_markup = InlineKeyboardMarkup(
-                                              [[
-                                                      InlineKeyboardButton("🌟 JOIN CHANNEL 🌟",
-                                                                    url = invite_link.invite_link)
-                                              ],[
-                                                      InlineKeyboardButton("♻️ REFRESH ♻️",
-                                                                    callback_data = "refresh")
-                                              ]]
-                                         ))
+                                                    reply_markup=InlineKeyboardMarkup(
+                                                        [
+                                                            [
+                                                                InlineKeyboardButton("🌟(JOIN CHANNEL) أنظم في القناة🌟", url=invite_link.invite_link)
+                                                            ],[
+                                                                InlineKeyboardButton("تحديث | Refresh ♻️", callback_data="refresh")
+                                                            ]]
+                                                    ))
                 if message.chat.type not in ['group', 'supergroup']:
                     await message.delete()
                 return
@@ -338,15 +337,15 @@ async def start(bot, message):
             await message.delete()
         else:
             await message.reply(
-                               "THIS IS A WELCOME MESSAGE 😂\n\n"
-                               "/help FOR HELP MESSAGE 🤧",
+                               "هذه رسالة ترحيبTHIS IS A WELCOME MESSAGE 😂\n\n"
+                               "/help FOR HELP MESSAGEلرسالة المساعدة 🤧",
                                quote = True,
                                reply_markup = InlineKeyboardMarkup(
                                    [[
                                        InlineKeyboardButton("🌟Rate bot تقييم البوت 🌟",
                                               url="https://telegramic.org/bot/i2pdfbot/"),
-                                       InlineKeyboardButton("🔍 ABOUT BOT 🔎",
-                                                     url="https://telegram.dog/nabilanavab")
+                                       InlineKeyboardButton("🔍 ABOUT BOT حول البوت 🔎",
+                                                     url="https://telegram.dog/i2pdfbot")
                                    ],[
                                        InlineKeyboardButton("📌 SET THUMB اختر الابهام 📌",
                                                                    callback_data="getThumb")
