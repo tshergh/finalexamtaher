@@ -11,4 +11,3 @@ RUN apt update && apt install -y ocrmypdf
 COPY . .
 
 CMD python3 pdf.py
-

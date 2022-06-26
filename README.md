@@ -134,7 +134,7 @@ the extracted PDF-images..</em>
     ╰────Railways──〄
 
 ### deploy on heroku:
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/tshergh/finalexamtaher)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/nabilanavab/ilovepdf)
 
 ## Project setUp:
 
@@ -156,7 +156,7 @@ the extracted PDF-images..</em>
 
      API_ID, API_HASH, API_TOKEN
      CONVERT_API, UPDATE_CHANNEL
-     MAX_FILE_SIZE
+     MAX_FILE_SIZE, ADMINS, BANNED_USERS
 
 ## About LICENSE:
 

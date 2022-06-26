@@ -26,7 +26,7 @@
 		},
 		"UPDATE_CHANNEL": {
 			"description": "ChannelId if you need force Subscription",
-			"required": true
+			"required": false
 		},
 		"CONVERT_API": {
 			"description": "ConvertAPI secret token",
@@ -39,8 +39,12 @@
 		"OWNER_ID": {
 			"description": "No Use Yet.. :/",
 			"required": false
+		},
+		"BANNED_USER": {
+			"description": "No Use Yet.. :/",
+			"required": false
 		}
-    },
+	},
 	"buildpacks": [
 		{
 			"url": "heroku/python"
