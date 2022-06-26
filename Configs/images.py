@@ -5,32 +5,32 @@ import os
 
 
 # ❌ FEEDBACK LINK ❌ [EDITABLE]
-FEEDBACK = "https://t.me/i2pdfbotchannel/9?comment=13"
+FEEDBACK = "https://telegram.dog/ilovepdf_bot"
 
 
 # ❌ DEFAULT THUMBNAIL ❌ [EDITABLE]
 # NB: Thumbnails can’t be reused and can be only uploaded as a new file.
 # from Configs.images import PDF_THUMBNAIL
-PDF_THUMBNAIL = "./images/i2pdfbot.jpg"
-# PDF_THUMBNAIL="https://te.legra.ph/i2pdfbot-06-26"
+PDF_THUMBNAIL = "./images/thumbnail.jpeg"
+# PDF_THUMBNAIL="https://te.legra.ph/file/a780afd8b5cef866a388d.jpg"
 
 
 # ❌ WELCOME IMAGE ❌ [EDITABLE]
 # from Configs.images import WELCOME_PIC
 # WELCOME_IMAGE="./images/start.jpeg"
-WELCOME_PIC = "https://te.legra.ph/i2pdfbot-06-26"
+WELCOME_PIC = "https://te.legra.ph/file/8dfa3760df91a218a629c.jpg"
 
 
 # ❌ BANNED IMAGE ❌ [EDITABLE]
 # from Configs.images import BANNED_PIC
 # BANNED_MESSAGE="./images/banned.jpeg"
-BANNED_PIC = "https://te.legra.ph/i2pdfbot-06-26"
+BANNED_PIC = "https://te.legra.ph/file/8dfa3760df91a218a629c.jpg"
 
 
 # ❌ BIG FILE ❌ [EDITABLE]
 # from Configs.images import BIG_FILE
 #  = "./images/bigFile.jpeg"
-BIG_FILE = "https://te.legra.ph/i2pdfbot-06-26"
+BIG_FILE = "https://te.legra.ph/file/8dfa3760df91a218a629c.jpg"
 
 
 # ❌ Load UsersId with custom thumbnail ❌
