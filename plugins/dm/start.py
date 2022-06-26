@@ -188,8 +188,8 @@ button = InlineKeyboardMarkup(
             InlineKeyboardButton("⚠️ HELP AND RULES تعليمات وقواعد⚠️",
                                      callback_data="help")
         ],[
-            InlineKeyboardButton("🌟 SOURCE CODE 🌟",
-            url="https://github.com/nabilanavab/ilovepdf")
+            InlineKeyboardButton("📨 About |حول 📨",
+            callback_data = "strtDevEdt")
         ],[
             InlineKeyboardButton("🤖 CHANNEL قناة 🤖",
                   url="https://telegram.dog/i2pdfbotchannel"),
@@ -363,10 +363,112 @@ async def start(bot, message):
 
 refreshDoc = filters.create(lambda _, __, query: query.data == "refreshDoc")
 refreshImg = filters.create(lambda _, __, query: query.data == "refreshImg")
+strtDevEdt = filters.create(lambda _, __, query: query.data == "strtDevEdt")
+exploreBot = filters.create(lambda _, __, query: query.data == "exploreBot")
+translatorBot= filters.create(lambda _, __, query: query.data == "translatorBot")
 refresh = filters.create(lambda _, __, query: query.data == "refresh")
 close = filters.create(lambda _, __, query: query.data == "close")
 back = filters.create(lambda _, __, query: query.data == "back")
 hlp = filters.create(lambda _, __, query: query.data == "help")
+@ILovePDF.on_callback_query(strtDevEdt)
+async def _strtDevEdt(bot, callbackQuery):
+    try:
+        await callbackQuery.edit_message_text(
+            aboutDev,
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Website(موقع)🌐",
+                            url = "https://electrical-engineer-cc40b.web.app/"
+                        ),
+                        InlineKeyboardButton(
+                            "الصفحة الرئيسية home 🏠  ",
+                            callback_data = "back"
+                        )
+                    ],
+                          [
+                        InlineKeyboardButton(
+                            "🌟 Rate : تقييم 🌟",
+                            url ="https://telegramic.org/bot/i2pdfbot/"
+                        )
+                    ],                  
+                        [
+                        InlineKeyboardButton(
+                            "🚫 أغلق | CLOSE  🚫",
+                            callback_data = "close"
+                        )
+                    ]
+                ]
+            )
+        )
+        return
+    except Exception as e:
+        print(e)
+
+
+@ILovePDF.on_callback_query(exploreBot)
+async def _exploreBot(bot, callbackQuery):
+    try:
+        await callbackQuery.edit_message_text(
+            exploreBotEdit,
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "الصفحة الرئيسية home 🏠  ",
+                            callback_data = "back"
+                        )
+                    ],
+                          [
+                        InlineKeyboardButton(
+                            "🌟 Rate : تقييم 🌟",
+                            url ="https://t.me/tlgrmcbot?start=i2pdfbot"
+                        )
+                    ],                  
+                        [
+                        InlineKeyboardButton(
+                            "🚫 أغلق | CLOSE  🚫",
+                            callback_data = "close"
+                        )
+                    ]
+                ]
+            )
+        )
+        return
+    except Exception as e:
+        print(e)
+@ILovePDF.on_callback_query(translatorBot)
+async def _translatorBot(bot, callbackQuery):
+    try:
+        await callbackQuery.edit_message_text(
+            translatorBot2Edit,
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "الصفحة الرئيسية home 🏠  ",
+                            callback_data = "back"
+                        )
+                    ],
+                          [
+                        InlineKeyboardButton(
+                            "شرح كيفية  ترجمة pdf 🎥",
+                            url ="https://youtu.be/96n_OlK3PCk"
+                        )
+                    ],                  
+                        [
+                        InlineKeyboardButton(
+                            "🚫 أغلق | CLOSE  🚫",
+                            callback_data = "close"
+                        )
+                    ]
+                ]
+            )
+        )
+        return
+    except Exception as e:
+        print(e)
 
 @ILovePDF.on_callback_query(hlp)
 async def _hlp(bot, callbackQuery):
