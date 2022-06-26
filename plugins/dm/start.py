@@ -39,7 +39,8 @@ welcomeMsg = """مرحبا 𝓗𝓲 [{}](tg://user?id={})..!!🌝💛
 Some of the main features are:
 ◍ `Convert images to PDF`
 ◍ `Convert files to pdf`
-◍ `For more information, click: Explore Bot`"""
+◍ `For more information, click: Explore Bot`
+[feedback|اكتب تعليقًا📋](https://t.me/engineering_electrical9/719?comment=1)"""
 UCantUse = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب 🛑"
 
 
@@ -193,8 +194,8 @@ button = InlineKeyboardMarkup(
         ],[
             InlineKeyboardButton("🤖 CHANNEL قناة 🤖",
                   url="https://telegram.dog/i2pdfbotchannel"),
-            InlineKeyboardButton("📝 FEEDBACK اكتب تعليقاً 📝",
-                                        url=f"{FEEDBACK}")
+            InlineKeyboardButton("📮Explore|استكشف📮",
+                                      callback_data = "exploreBot")
         ],[
             InlineKeyboardButton("➕ ADD TO GROUP أضف للمجموعة➕",
                                   callback_data="underDev")
@@ -422,8 +423,8 @@ async def _exploreBot(bot, callbackQuery):
                     ],
                           [
                         InlineKeyboardButton(
-                            "🌟 Rate : تقييم 🌟",
-                            url ="https://t.me/tlgrmcbot?start=i2pdfbot"
+                            "📕ترجمة pdf | translator📙",
+                            callback_data = "translatorBot"
                         )
                     ],                  
                         [
