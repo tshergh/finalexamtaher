@@ -177,15 +177,15 @@ Some of the main features are:
 """
 
 
-LOG_TEXT = "#newUser @nabilanavab/ILovePDF\nID: {}\nView Profile: {}"
-LOG_TEXT_C = "#newChat @nabilanavab/ILovePDF\nID: {}\nGroup Title: {}\nTotal Users: {}\nUserNsme: {}"
+LOG_TEXT = "#مستخدم_جديد @ta_ja199/I2PDFbot\nID: {}\nعرض البروفايل(View Profile): {}"
+LOG_TEXT_C = "#مستخدم_جات @ta_ja199/I2PDFbot\nID: {}\nعنوان المجموعة(Group Title): {}\nعدد مستخدمين(Total Users): {}\nUserNsme: {}"
 
 button = InlineKeyboardMarkup(
         [[
             InlineKeyboardButton("📌 SET THUMB ضبط الإبهام  📌",
                                  callback_data="getThumb"),
         ],[
-            InlineKeyboardButton("⚠️ HELP AND RULES ⚠️",
+            InlineKeyboardButton("⚠️ HELP AND RULES تعليمات وقواعد⚠️",
                                      callback_data="help")
         ],[
             InlineKeyboardButton("🌟 SOURCE CODE 🌟",
@@ -196,10 +196,10 @@ button = InlineKeyboardMarkup(
             InlineKeyboardButton("📝 FEEDBACK 📝",
                                         url=f"{FEEDBACK}")
         ],[
-            InlineKeyboardButton("➕ ADD TO GROUP ➕",
+            InlineKeyboardButton("➕ ADD TO GROUP أضف للمجموعة➕",
                                   callback_data="underDev")
         ],[
-            InlineKeyboardButton("🚶 CLOSE 🚶",
+            InlineKeyboardButton("🚶 CLOSE أغلق 🚶",
                                     callback_data="close")
         ]]
     )
@@ -250,19 +250,19 @@ async def start(bot, message):
                         except Exception: pass
                 try:
                     return await message.reply(
-                                   f"Hi There.! 🖐️\n"
-                                   f"Im new here {message.chat.title}\n\n"
-                                   f"Let me Introduce myself.. \n"
-                                   f"My Name is iLovePDF, and i can help you to do many "
-                                   f"Manipulations with @Telegram PDF files\n\n"
-                                   f"Thanks @nabilanavab for this Awesome Bot 😅", quote=True,
+                                   f"أهلاً.! Hi There.! 🖐️\n"
+                                   f"أنا جديد هنا(Im new here) {message.chat.title}\n\n"
+                                   f"دعني أقدم نفسي(Let me Introduce myself).. \n"
+                                   f"اسمي هو i2pdf ، ويمكنني مساعدتك في القيام بالكثير (My Name is iLovePDF, and i can help you to do many )"
+                                   f"التلاعب بملفاتTelegram PDF Manipulations with @Telegram PDF files\n\n"
+                                   f"Thanks @ta_ja199 for this Awesome Bot 😅", quote=True,
                                    reply_markup = InlineKeyboardMarkup(
-                                                                     [[InlineKeyboardButton("🤠 BOT OWNER 🤠",
-                                                                          url = "Telegram.dog/nabilanavab"),
-                                                                       InlineKeyboardButton("🛡️ UPDATE CHANNEL🛡️",
-                                                                          url = "Telegram.dog/iLovePDF_bot")],
-                                                                      [InlineKeyboardButton("🌟 SOURCE CODE 🌟",
-                                                                          url = "https://github.com/nabilanavab/iLovePDF")]]
+                                                                     [[InlineKeyboardButton("🤠 BOT OWNER مطور البوت 🤠",
+                                                                          url = "Telegram.dog/ta_ja199"),
+                                                                       InlineKeyboardButton("🛡️ UPDATE CHANNEL قناة التحديثات🛡️",
+                                                                          url = "Telegram.dog/i2pdfbotchannel")],
+                                                                      [InlineKeyboardButton("🌟 تقييم البوت Rate bot 🌟",
+                                                                          url = "https://telegramic.org/bot/i2pdfbot/")]]
                                   ))
                 except Exception: pass
             if message.chat.type == "private":
@@ -343,8 +343,8 @@ async def start(bot, message):
                                quote = True,
                                reply_markup = InlineKeyboardMarkup(
                                    [[
-                                       InlineKeyboardButton("🌟 SOURCE CODE 🌟",
-                                              url="https://github.com/nabilanavab/ILovePDF"),
+                                       InlineKeyboardButton("🌟Rate bot تقييم البوت 🌟",
+                                              url="https://telegramic.org/bot/i2pdfbot/"),
                                        InlineKeyboardButton("🔍 ABOUT BOT 🔎",
                                                      url="https://telegram.dog/nabilanavab")
                                    ],[
