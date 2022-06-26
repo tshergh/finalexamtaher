@@ -222,9 +222,9 @@ async def documents(bot, message):
                                            )
         if status.status not in ["administrator", "creator"]:
             return await message.reply(
-                                      "Due to Some Telegram Limits.."
-                                      "I can only work as an admin\n\n"
-                                      "__Please promote me as admin__ ☺️",
+                                      "بسبب بعض حدود تيليكرام ..Due to Some Telegram Limits.."
+                                      "لا يمكنني العمل إلا كمسؤول I can only work as an admin\n\n"
+                                      "__من فضلك قم بترقيتي كمسؤول Please promote me as admin__ ☺️",
                                       quote = True
                                       )
         
