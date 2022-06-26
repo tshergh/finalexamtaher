@@ -197,17 +197,17 @@ async def _addThumb(bot, callbackQuery):
     try:
         await callbackQuery.answer()
         await callbackQuery.edit_message_caption(
-                                                caption = "Now, Send me a Image..",
+                                                caption = "الآن  ، أرسل  الصورة..\nNow, Send me a Image..",
                                                 reply_markup = InlineKeyboardMarkup(
-                                                    [[InlineKeyboardButton("Waiting.. 🥱",
+                                                    [[InlineKeyboardButton("انتظر Waiting.. 🥱",
                                                              callback_data = "noResponse")]]
                                                 ))
         await asyncio.sleep(1)
         await callbackQuery.edit_message_caption(
-                                                caption = "Now, Send me a Image for Future Use.. 😅\n\n"
-                                                          "Don't have enough time, send me fast 😏",
+                                                caption = " الآن ، أرسل لي صورة لاستخدامها في المستقبل.\nNow, Send me a Image for Future Use.. 😅\n\n"
+                                                          "ليس لديك ما يكفي من الوقت ، أرسل لي بسرعة \nDon't have enough time, send me fast 😏",
                                                 reply_markup = InlineKeyboardMarkup(
-                                                    [[InlineKeyboardButton("Waiting.. 🥱",
+                                                    [[InlineKeyboardButton("انتظر Waiting.. 🥱",
                                                              callback_data = "noResponse")]]
                                                 ))
         getThumb = await bot.listen(
@@ -219,15 +219,15 @@ async def _addThumb(bot, callbackQuery):
         else:
             await callbackQuery.edit_message_media(InputMediaPhoto(getThumb.photo.file_id))
             await callbackQuery.edit_message_caption(
-                                                    caption = "🌟 CURRENT THUMBNAIL 🌟\n\n"
-                                                              "/thumbnail :\n◍ To get current thumbnail\n"
-                                                              "◍ Reply to a photo to set custom thumbnail",
+                                                    caption = "🌟 CURRENT THUMBNAIL  الصورة المصغرة الحالية🌟\n\n"
+                                                              "/thumbnail :\n◍للحصول على الصورة المصغرة الحالية\nTo get current thumbnail\n"
+                                                              "◍الرد على صورة لتعيين صورة مصغرة مخصصة\nReply to a photo to set custom thumbnail",
                                                     reply_markup = InlineKeyboardMarkup(
-                                                        [[InlineKeyboardButton("🥲 CHANGE 🥲",
+                                                        [[InlineKeyboardButton("🥲 CHANGE ألغاء 🥲",
                                                                        callback_data = "addThumb"),
-                                                          InlineKeyboardButton("🤩 DELETE 🤩",
+                                                          InlineKeyboardButton("🤩 DELETE حذف 🤩",
                                                                       callback_data = "delThumb")],
-                                                         [InlineKeyboardButton("« BACK «",
+                                                         [InlineKeyboardButton("« BACK عودة«",
                                                                           callback_data = "back")]]
                                                     ))
             await db.set_thumbnail(
