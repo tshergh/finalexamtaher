@@ -77,60 +77,73 @@ suprtedPdfFile2 = [
 #--------> LOCAL VARIABLES
 #------------------->
 
-pdfReplyMsg = """`What shall i do with this file.?`
+UCantUse = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب "
 
-File Name : `{}`
-File Size : `{}`"""
 
-bigFileUnSupport = """Due to Overload, Owner limits {}mb for pdf files 🙇
+pdfReplyMsg = """`ماذا تريد أن أفعل بهذا الملف.؟ \n What shall i wanted to do with this file.?`
+File name(اسم الملف) : `{}`
+File Size(حجم الملف) : `{}`"""
 
-`please Send me a file less than {}mb Size` 🙃"""
 
-imageAdded = """`Added {} page/'s to your pdf..`🤓
+bigFileUnSupport = """Due to Overload(بسبب التحميل الزائد), Owner limits(حدد المطور) {}MB for pdf files(لكل ملفات) 🙇
+`please Send me a file less than(لي ملف حجمه أقل من ) {}MB ` 🙃"""
 
-fileName: `{}.pdf`"""
 
-errorEditMsg = """Something went wrong..😐
+imageAdded = """`تمت إضافة {} صفحة / إلى ملف pdf ..`🤓
+/generate  اضغط لإنشاء ملف PDF 🤞"""
 
-ERROR: `{}`
 
-For bot updates join @ilovepdf_bot"""
+errorEditMsg = """حدث خطأ ما ..😐 Something went wrong..😐
+error: `{}`
+Dev&eng: @ta_ja199 👨‍💻"""
 
-forceSubMsg = """Wait [{}](tg://user?id={})..!!
 
-Due To The Huge Traffic Only Channel Members Can Use this Bot 🚶
+feedbackMsg = "[🌟Rate:تقييم🌟](https://telegramic.org/bot/i2pdfbot/)"
 
-This Means You Need To Join The Below Mentioned Channel for Using Me!
+forceSubMsg ="""مرحبا [{}](tg://user?id={}) 🤚🏻..!!
+يجب عليك إنضمام الى هذه القناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :
+👇👇👇👇👇👇
+ @i2pdfbotchannel
+وبعدها ارجع للبوت واضغط هذا الامر /start او من ازار اضغط تحديث
+لمتابعة كافة تحديثات البوت
 
-hit on "retry ♻️" after joining.. 😅"""
-
-pdfReply = InlineKeyboardMarkup(
-        [[
-            InlineKeyboardButton("⭐ META£ATA ⭐", callback_data="pdfInfo"),
-            InlineKeyboardButton("🗳️ PREVIEW 🗳️", callback_data="preview")
-        ],[
-            InlineKeyboardButton("🖼️ IMAGES 🖼️", callback_data="toImage"),
-            InlineKeyboardButton("✏️ TEXT ✏️", callback_data="toText")
-        ],[
-            InlineKeyboardButton("🔐 ENCRYPT 🔐", callback_data="encrypt"),
-            InlineKeyboardButton("🔒 DECRYPT 🔓",callback_data="decrypt")
-        ],[
-            InlineKeyboardButton("🗜️ COMPRESS 🗜️", callback_data="compress"),
-            InlineKeyboardButton("🤸 ROTATE 🤸", callback_data="rotate")
-        ],[
-            InlineKeyboardButton("✂️ SPLIT ✂️", callback_data="split"),
-            InlineKeyboardButton("🧬 MERGE 🧬", callback_data="merge")
-        ],[
-            InlineKeyboardButton("™️ STAMP ™️", callback_data="stamp"),
-            InlineKeyboardButton("✏️ RENAME ✏️", callback_data="rename")
-        ],[
-            InlineKeyboardButton("📝 OCR 📝", callback_data="ocr"),
-            InlineKeyboardButton("🥷 A4 FORMAT 🥷", callback_data="format")
-        ],[
-            InlineKeyboardButton("🚫 CLOSE 🚫", callback_data="closeALL")
-        ]]
+You must join a channel in order to use the bot. Subscribe to this channel: 
+👇👇👇👇
+ @i2pdfbotchannel
+Then go back to the bot and press this command / start, or from the buttons, press update
+To follow all bot updates`
+"""
+pdfReply=InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("⭐️ معلومات|info ⭐️", callback_data="pdfInfo"),
+                InlineKeyboardButton("🗳 معاينة | preview🗳", callback_data="preview")
+            ],[
+                InlineKeyboardButton("🖼 الى صور | toImage 🖼", callback_data="toImage"),
+                InlineKeyboardButton("✏️ الى نص totext✏️", callback_data="toText")
+            ],[
+                InlineKeyboardButton("🔐 تشفير | ENCRYPT 🔐", callback_data="encrypt"),
+                InlineKeyboardButton("🔒 فك تشفير | DECRYPT🔓",callback_data="decrypt")
+            ],[
+                InlineKeyboardButton("🗜 ضغط | COMPRESS 🗜", callback_data="compress"),
+                InlineKeyboardButton("🤸 استدارة | ROTATE  🤸", callback_data="rotate")
+            ],[
+                InlineKeyboardButton("✂️ تقسيم | SPLIT  ✂️", callback_data="split"),
+                InlineKeyboardButton("🧬 دمج | MERGE  🧬", callback_data="merge")
+            ],[
+                InlineKeyboardButton("™️ ختم STAMP ™️", callback_data="stamp"),
+                InlineKeyboardButton("✏️ إعادة تسمية |RENAME ✏️", callback_data="rename")
+            ],[
+                InlineKeyboardButton("📝 مسح ضوئي | OCR 📝", callback_data="ocr"),
+                InlineKeyboardButton("🥷A4 FORMAT|تنسيق🥷", callback_data="format")
+            ],[
+                InlineKeyboardButton("🤐 ZIP 🤐", callback_data="zip"),
+                InlineKeyboardButton("🎯 TAR 🎯", callback_data="tar")
+            ],[     
+                InlineKeyboardButton("🚫 أغلق | CLOSE  🚫", callback_data="closeALL")
+            ]
+        ]
     )
-
 UPDATE_CHANNEL = Config.UPDATE_CHANNEL
 
 #--------------->
