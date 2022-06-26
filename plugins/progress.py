@@ -13,7 +13,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 reply_markup = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("⟨ Cancel ⟩", callback_data="closeme")
+            InlineKeyboardButton("⟨ Cancel 🚫 إلغاء ⟩", callback_data="closeme")
         ]]
     )
 
@@ -56,13 +56,13 @@ async def uploadProgress(current, total, message, start):
             ''.join(["○" for _ in range(20 - math.floor(percentage / 5))])
         )
         estimated_total_time = TimeFormatter(time_to_completion)
-        tmp = progress + "**\nDone ✅ : **{0}/{1}\n**Speed 🚀:** {2}/s\n**Estimated Time ⏳:** {3}".format(
+        tmp = progress + "**\nDone(انتهى) ✅ : **{0}/{1}\n**Speed(السرعة) 🚀:** {2}/s\n**Estimated Time(الوقت المقدر) ⏳:** {3}".format(
             await gSF(current), await gSF(total), await gSF(speed),
             estimated_total_time if estimated_total_time != '' else "0 s"
         )
         
         await message.edit_text(
-            text = "UPLOADING.. 📤\n{}".format(tmp),
+            text = "UPLOADING..جاري التحميل.. 📤\n{}".format(tmp),
             reply_markup = reply_markup
         )
 
