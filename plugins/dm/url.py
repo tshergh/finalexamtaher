@@ -25,7 +25,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 reply_markup = InlineKeyboardMarkup(
                      [[
-                             InlineKeyboardButton("🧭 Get PDF File 🧭",
+                             InlineKeyboardButton("🧭 Get PDF File حصول على ملف 🧭",
                                              callback_data = "getFile")
                      ]]
                )
@@ -38,17 +38,17 @@ else:
     MAX_FILE_SIZE = False
 
 
-# url Example: https://t.me/channel/message
-#              https://t.me/nabilanavab/1
+# url Example مثال : https://t.me/channel/message
+#              https://t.me/i2pdfbotchannel/9
 links = ["https://telegram.dog/", "https://t.me/", "https://telegram.me/"]
 
 async def getPDF(current, t, message, total=0, typ="DOWNLOADED"):
     if t != 0:
         total = t
     if typ == "DOWNLOADED":
-        edit = "📥 DOWNLOADED: {:.2f}% 📥"
+        edit = "📥 تنزيل(DOWNLOADED): {:.2f}% 📥"
     else:
-        edit = "📤 UPLOADED: {:.2f}% 📤"
+        edit = "📤 تحميل(UPLOADED): {:.2f}% 📤"
     percentage = current * 100 / total
     await message.edit_reply_markup(
           InlineKeyboardMarkup(
@@ -71,7 +71,7 @@ async def _url(bot, message):
                                        "typing"
                                        )
         data = await message.reply(
-                                  "__Started Fetching Datas..__ 📥",
+                                  "__تم البدء في جلب البيانات.\nStarted Fetching Datas..__ 📥",
                                   quote = True
                                   )
         
@@ -93,12 +93,12 @@ async def _url(bot, message):
                                              )
             except Exception as e:
                 return await data.edit(
-                                      "🐉 SOMETHING WENT WRONG 🐉\n\n"
-                                      f"ERROR: `{e}`\n\n"
-                                      "NB: In Groups, Bots Can Only fetch documents Send After Joining Group =)",
+                                      "🐉هناك خطأ ما\nSOMETHING WENT WRONG 🐉\n\n"
+                                      f"ERRORخطا: `{e}`\n\n"
+                                      "في المجموعات ، يمكن للروبوتات فقط جلب المستندات التي يتم إرسالها بعد الانضمام إلى المجموعة \nIn Groups, Bots Can Only fetch documents Send After Joining Group =)",
                                       reply_markup = InlineKeyboardMarkup(
                                            [[
-                                                 InlineKeyboardButton("🚫 Close 🚫",
+                                                 InlineKeyboardButton("🚫 Close اغلق🚫",
                                                          callback_data = "closeALL")
                                            ]]
                                       ))
@@ -108,43 +108,43 @@ async def _url(bot, message):
                                  file.chat and file.chat.has_protected_content)) else "👀 Public 👀"
             if file.chat.type == "channel":
                 return await data.edit(
-                                      f"[Open Chat]({url})\n\n"
-                                      f"**ABOUT CHAT ↓**\n"
-                                      f"Chat Type   : {file.chat.type}\n"
-                                      f"Chat Name : {file.sender_chat.title}\n"
-                                      f"Chat Usr    : @{file.sender_chat.username}\n"
-                                      f"Chat ID        : {file.sender_chat.id}\n"
-                                      f"Date : {file.date}\n\n"
-                                      f"**ABOUT MEDIA ↓**\n"
-                                      f"Media       : {file.media}\n"
-                                      f"File Name : {file.document.file_name}\n"
-                                      f"File Size   : {await gSF(file.document.file_size)}\n\n" + 
-                                      f"File Type : {isProtect}",
+                                      f"[Open Chat فتح المحادثة]({url})\n\n"
+                                      f"**ABOUT CHAT حول الجات↓**\n"
+                                      f"Chat Type  نوع جات : {file.chat.type}\n"
+                                      f"Chat Name اسم الجات : {file.sender_chat.title}\n"
+                                      f"Chat Usr يوزر جات : @{file.sender_chat.username}\n"
+                                      f"Chat ID    معرف جات : {file.sender_chat.id}\n"
+                                      f"Date وقت: {file.date}\n\n"
+                                      f"**ABOUT MEDIA حول وسائط↓**\n"
+                                      f"Media    وسائط   : {file.media}\n"
+                                      f"File Name اسم ملف : {file.document.file_name}\n"
+                                      f"File Size  حجم ملف : {await gSF(file.document.file_size)}\n\n" + 
+                                      f"File Type نوع ملف : {isProtect}",
                                       reply_markup = reply_markup if file.document.file_name[-4:] == ".pdf" else None,
                                       disable_web_page_preview = True
                                       )
             return await data.edit(
-                                  f"[Open Chat]({url})\n\n "
-                                  f"**ABOUT CHAT ↓**\n"
-                                  f"Chat Type   : {file.chat.type}\n"
-                                  f"Chat Name : {file.chat.title}\n"
-                                  f"Chat Usr    : @{file.chat.username}\n"
-                                  f"Chat ID        : {file.chat.id}\n"
-                                  f"Date : {file.date}\n\n"
-                                  f"**ABOUT MEDIA ↓**\n"
-                                  f"Media       : {file.media}\n"
-                                  f"File Name : {file.document.file_name}\n"
-                                  f"File Size   : {await gSF(file.document.file_size)}\n\n"
-                                  f"File Type : {isProtect}",
+                                  f"[Open Chat فتح جات]({url})\n\n "
+                                  f"**ABOUT CHAT حول جات↓**\n"
+                                  f"Chat Type  نوع جات : {file.chat.type}\n"
+                                  f"Chat Name اسم جات: {file.chat.title}\n"
+                                  f"Chat Usr  يوزر جات  : @{file.chat.username}\n"
+                                  f"Chat ID   معرف جات  : {file.chat.id}\n"
+                                  f"Date الوقت: {file.date}\n\n"
+                                  f"**ABOUT MEDIA حول وسائط ↓**\n"
+                                  f"Media   الوسائط     : {file.media}\n"
+                                  f"File Name أسم  ملف: {file.document.file_name}\n"
+                                  f"File Size  حجم ملف: {await gSF(file.document.file_size)}\n\n"
+                                  f"File Type نوع ملف: {isProtect}",
                                   reply_markup = reply_markup if file.document.file_name[-4:] == ".pdf" else None,
                                   disable_web_page_preview = True
                                   )
             
         return await data.edit(
-                              "Please Send Me A Direct Telegram PDF Url"
+                              "الرجاء إرسال عنوان Telegram PDF المباشر إلي\nPlease Send Me A Direct Telegram PDF Url"
                               )
     except Exception as e:
-        return await data.edit("__Check Url, Not a PDF File__ 🥲")
+        return await data.edit("__تحقق من عنوان URL ، وليس ملف PDF\nCheck Url, Not a PDF File__ 🥲")
         logger.exception(
                         "URL:CAUSES %(e)s ERROR",
                         exc_info=True
@@ -157,17 +157,17 @@ async def _getFile(bot, callbackQuery):
     try:
         # REPLY TO LAGE FILES/DOCUMENTS
         if MAX_FILE_SIZE and fileSize >= int(MAX_FILE_SIZE_IN_kiB):
-            return await callbackQuery.answer("Big File.. 🏃")
+            return await callbackQuery.answer("ملف كبير Big File.. 🏃")
         
         if callbackQuery.from_user.id in PROCESS:
             return await callbackQuery.answer(
-                                             "Work in progress.. 🙇"
+                                             "جاري العمل Work in progress.. 🙇"
                                              )
         if callbackQuery.message.chat.type != "private":
             if await header(bot, callbackQuery):
                 return
         PROCESS.append(callbackQuery.from_user.id)
-        await callbackQuery.answer("Wait.. Let me.. 😜")
+        await callbackQuery.answer("انتظر .. دعني ..\nWait.. Let me.. 😜")
         url = callbackQuery.message.reply_to_message.text
         part = url.split("/")
         message_ids = int(part[-1])
@@ -194,7 +194,7 @@ async def _getFile(bot, callbackQuery):
               InlineKeyboardMarkup(
                                   [[
                                       InlineKeyboardButton(
-                                                          "📥 ..DOWNLOADING.. 📥",
+                                                          "📥 ..تنزيل DOWNLOADING.. 📥",
                                                           callback_data = "nabilanavab")
                                   ]]
               ))
@@ -210,7 +210,7 @@ async def _getFile(bot, callbackQuery):
               InlineKeyboardMarkup(
                                   [[
                                       InlineKeyboardButton(
-                                                          "📤 ..UPLOADING..  📤",
+                                                          "📤 ..تحميل UPLOADING..  📤",
                                                           callback_data = "nabilanavab")
                                   ]]
         ))
@@ -227,8 +227,8 @@ async def _getFile(bot, callbackQuery):
               InlineKeyboardMarkup(
                                   [[
                                       InlineKeyboardButton(
-                                                          "😎 COMPLETED 😎",
-                                                          url = "https://github.com/nabilanavab/ILovePDF")
+                                                          "😎 قناة البوت 😎",
+                                                          url = "https://t.me/i2pdfbotchannel")
                                   ]]
         ))
         PROCESS.remove(callbackQuery.from_user.id)
