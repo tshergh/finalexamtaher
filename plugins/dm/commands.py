@@ -20,30 +20,37 @@ from configs.images import FEEDBACK
 from pyrogram import Client as ILovePDF
 
 
-feedbackMsg=f"[Write a feedback 📋]({FEEDBACK})"
+feedbackMsg=f"[feedback|اكتب تعليقًا 📋]({FEEDBACK})"
 
-userHELP="""[USER COMMAND MESSAGES]:\n
+userHELP="""[رسائل أوامر المستخدم]:\n
+/start, /ping: للتحقق مما إذا كان Bot على قيد الحياة\n
+/help, /command: على هذه الرسالة\n
+/generate: إنشاء PDF بالصور الحالية\n
+/delete: يحذف الصورة الحالية لقائمة انتظار pdf\n
+/txt2pdf: لإنشاء ملفات pdf من رسالة نصية\n
+/feedback: لكتابة شيء عن i2PDFbot
+[USER COMMAND MESSAGES]:\n
 /start, /ping: to check whether Bot alive\n
 /help, /command: for this message\n
 /generate: generate PDF with current images\n
 /delete: deletes the current image to pdf queue\n
 /txt2pdf: to create pdf files from text message\n
-/feedback: to Write something about i💜PDF bot"""
+/feedback: to Write something about i2PDFbot"""
 
-adminHelp="""\n\n[ADMIN COMMAND MESSAGES]:\n
-/server: to get current bot, server status\n
-/ban `id/usrnm`: to ban a user\n
-/unban `id/usrnm`: to unban a banned user\n
-/deleteUser `id/usrnm`: delete user from database\n
-/forward `id/usrnm`: replied message forward to user\n
-/forward c `id/usrnm`: replied message forward as copy\n
-/users: get current bot users list\n
-/broadcast: replied message broadcast to all users\n
-/broadcast f: replied message forward to bot users"""
+adminHelp="""\n\n[رسائل أوامر المشرف]:\n
+/server: للحصول على البوت الحالي ، حالة الخادم\n
+/ban `id/usrnm`: لحظر مستخدم\n
+/unban `id/usrnm`:لفك حظر مستخدم محظور\n
+/deleteUser `id/usrnm`: حذف المستخدم من قاعدة البيانات\n
+/forward `id/usrnm`: ردت على إعادة توجيه الرسالة إلى المستخدم\n
+/forward c `id/usrnm`: رد على إعادة توجيه الرسالة كنسخة \n
+/users: الحصول على قائمة مستخدمي البوت الحاليين\n
+/broadcast: رد بث الرسالة لجميع المستخدمين\n
+/broadcast f: رد على إعادة توجيه الرسالة إلى مستخدمي الروبوت"""
 
-footer="""\n\nSource-Code: [i💜PDF](https://github.com/nabilanavab/iLovePDF)\n
-Bot: @complete_pdf_bot 💎\n
-[Support Channel](https://telegram.dog/iLovePDF_bot)"""
+footer="""\n\nDev: [i2PDFbot](https://t.me/i2pdfbotchannel)\n
+Bot: @i2pdfbot
+[Support Channel قناة الدعم](https://t.me/i2pdfbotchannel)"""
 
 
 # ❌ CANCELS CURRENT PDF TO IMAGES WORK ❌
