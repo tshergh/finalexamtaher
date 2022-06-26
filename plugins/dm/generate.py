@@ -55,14 +55,14 @@ async def generate(bot, message):
                                            "typing"
                                            )
             imagesNotFounded = await message.reply_text(
-                                                       "`No image founded.!!`😒"
+                                                       "`لا توجد صورة .!! \nNo image founded.!!`😒"
                                                        )
             await asyncio.sleep(5)
             await message.delete()
             await imagesNotFounded.delete()
             return
         gnrtMsgId = await message.reply_text(
-                                            f"`Generating pdf..`💚"
+                                            f"`إنشاء ملف pdf(Generating pdf)..`💚"
                                             )
         
         if newName == " name":
@@ -91,7 +91,7 @@ async def generate(bot, message):
             thumbnail = await formatThumb(location)
         
         await gnrtMsgId.edit(
-                            "`Uploading pdf.. `🏋️"
+                            "`تحميل pdf(Uploading pdf).. `🏋️"
                             )
         await message.reply_chat_action(
                                        "upload_document"
@@ -101,11 +101,11 @@ async def generate(bot, message):
                                                   file_name = fileName,
                                                   document = pdf,
                                                   thumb = thumbnail,
-                                                  caption = f"file Name: `{fileName}`\n"
-                                                            f"`Total pg's: {pgnmbr}`"
+                                                  caption = f"أسم الملف(file Name): `{fileName}`\n"
+                                                            f"`عدد الصفحات(Total pg's): {pgnmbr}`"
                                                   )
         await gnrtMsgId.edit(
-                            "`Successfully Uploaded.. `🤫"
+                            "`تم الرفع بنجاح (Successfully Uploaded).. `🤫"
                             )
         shutil.rmtree(f"{chat_id}")
         try:
@@ -114,7 +114,7 @@ async def generate(bot, message):
         await footer(message, logFile)
     except Exception as e:
         logger.exception(
-                        "/GENERATE:CAUSES %(e)s ERROR",
+                        "/GENERATE:CAUSES %(e)s ERROR خطا في",
                         exc_info=True
                         )
         try:
@@ -136,7 +136,7 @@ async def _GEN(bot, callbackQuery):
         
         if not images :
             return await callbackQuery.answer(
-                                             "No image founded.!! 😒"
+                                             "لا توجد صورة .!! \nNo image founded.!!"
                                              )
         await callbackQuery.answer()
         
@@ -144,7 +144,7 @@ async def _GEN(bot, callbackQuery):
             fileName = await bot.ask(
                                     chat_id = chat_id,
                                     reply_to_message_id = callbackQuery.message.message_id,
-                                    text = f"Now Send Me a New File Name 😒: ",
+                                    text = f"الآن أرسل لي اسم ملف جديد 😒:\nNow Send Me a New File Name 😒: ",
                                     reply_markup = ForceReply(True)
                                     )
             if (not fileName.text) or len(fileName.text)>50:
@@ -158,11 +158,11 @@ async def _GEN(bot, callbackQuery):
             fileName = f"{chat_id}.pdf"
         
         gen = await callbackQuery.message.reply_text(
-              f"File Name: `{fileName}`\nPages: `{pgnmbr}`",
+              f" أسم الملف(File Name): `{fileName}`\nالصفحات(Pages): `{pgnmbr}`",
               reply_markup = InlineKeyboardMarkup(
                                   [[
                                       InlineKeyboardButton(
-                                                          "📚 GENERATING PDF..",
+                                                          "📚 GENERATING PDF أنشاء..",
                                                           callback_data = "nabilanavab")
                                   ]]
              ),
@@ -188,7 +188,7 @@ async def _GEN(bot, callbackQuery):
               InlineKeyboardMarkup(
                                   [[
                                       InlineKeyboardButton(
-                                                          "📤 ..UPLOADING..  📤",
+                                                          "📤 ..جارٍ التحميل UPLOADING..  📤",
                                                           callback_data = "nabilanavab")
                                   ]]
         ))
@@ -197,8 +197,8 @@ async def _GEN(bot, callbackQuery):
                                                      )
         logFile = await callbackQuery.message.reply_document(
                                                             document = filePath,
-                                                            caption = f"file Name: `{fileName}`\n"
-                                                                      f"`Total pg's: {pgnmbr}`",
+                                                            caption = f" أسم الملف(File Name): `{fileName}`\n"
+                                                                      f"`عدد الصفحات(Total pg's): {pgnmbr}`",
                                                             progress = getPDF,
                                                             file_name = fileName,
                                                             thumb = thumbnail,
@@ -215,7 +215,7 @@ async def _GEN(bot, callbackQuery):
         await footer(callbackQuery.message, logFile)
     except Exception as e:
         logger.exception(
-                        "GENERATE/CALLBACK:CAUSES %s ERROR" %e,
+                        "GENERATE/CALLBACK:CAUSES %s ERROR خطا" %e,
                         exc_info=True
                         )
         try:
