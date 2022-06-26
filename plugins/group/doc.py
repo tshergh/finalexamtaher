@@ -243,18 +243,18 @@ async def documents(bot, message):
                                          )
             if ONLY_GROUP_ADMIN and isAdmin.status not in ["administrator", "creator"]:
                 return await message.reply(
-                                          "Only Group Admins Can Use This Bot\n"
-                                          "Else Come to my Pm 😋", quote = True
+                                          "يمكن فقط لمسؤولي المجموعة استخدام هذا الروبوت\nOnly Group Admins Can Use This Bot\n"
+                                          "آخر تعال إلى رئيس بلدي Else Come to my Pm 😋", quote = True
                                           )
             elif isAdmin.status not in ["administrator", "creator"]:
                 if message.from_user.id != message.reply_to_message.from_user.id:
                     return await message.reply(
-                                              "Please Reply to Your Message.. 🙂"
+                                              "الرجاء الرد على رسالتك .. 🙂\nPlease Reply to Your Message.. 🙂"
                                               )
         
         if message.reply_to_message.photo:
             imageReply = await message.reply_to_message.reply_text(
-                                             "`Downloading your Image..` 📥",
+                                             "`تحميل صورتك .. Downloading your Image..` 📥",
                                              quote = True
                                              )
             if not isinstance(PDF.get(message.chat.id), list):
@@ -285,8 +285,8 @@ async def documents(bot, message):
                                      ),
                                      reply_markup = InlineKeyboardMarkup(
                                           [[
-                                               InlineKeyboardButton("💎 Create 2Gb Support Bot 💎",
-                                                     url = "https://github.com/nabilanavab/ilovepdf")
+                                               InlineKeyboardButton("💎 channel bot 💎",
+                                                     url = "https://t.me/i2pdfbotchannel")
                                            ]]
                                     ))
             return
@@ -295,7 +295,7 @@ async def documents(bot, message):
         elif fileExt.lower() in suprtedFile:
             try:
                 imageDocReply = await message.reply_to_message.reply_text(
-                                                        "`Downloading your Image.. 📥`",
+                                                        "`تنزيل صورتك Downloading your Image.. 📥`",
                                                         quote = True
                                                         )
                 if not isinstance(PDF.get(message.chat.id), list):
@@ -320,13 +320,13 @@ async def documents(bot, message):
         # REPLY TO .PDF FILE EXTENSION
         elif fileExt.lower() == ".pdf":
             pdfMsgId = await message.reply_to_message.reply_text(
-                                                                "⚙️ PROCESSING.",
+                                                                "⚙️ يتم المعالجة PROCESSING.",
                                                                 quote = True
                                                                 )
             await asyncio.sleep(0.5)
-            await pdfMsgId.edit("⚙️ PROCESSING..")
+            await pdfMsgId.edit("⚙️يتم المعالجة PROCESSING..")
             await asyncio.sleep(0.5)
-            await pdfMsgId.edit("⚙️ PROCESSING...")
+            await pdfMsgId.edit("⚙️ يتم المعالجة PROCESSING...")
             await asyncio.sleep(0.5)
             await pdfMsgId.edit(
                                text = pdfReplyMsg.format(
@@ -342,14 +342,14 @@ async def documents(bot, message):
             try:
                 PROCESS.append(message.from_user.id)
                 pdfMsgId = await message.reply_to_message.reply_text(
-                                                   "`Downloading your file.. 📥`",
+                                                   "`جارٍ تنزيل ملفك ..Downloading your file.. 📥`",
                                                    quote = True
                                                    )
                 await message.reply_to_message.download(
                                       f"{message.message_id}/{isPdfOrImg}"
                                       )
                 await pdfMsgId.edit(
-                                   "`Work in Progress.. It might take some time.. 💛`"
+                                   "`جاري العمل .. قد يستغرق بعض الوقت ..\nWork in Progress.. It might take some time.. 💛`"
                                    )
                 Document = fitz.open(
                                     f"{message.message_id}/{isPdfOrImg}"
@@ -373,7 +373,7 @@ async def documents(bot, message):
                     thumbnail = await formatThumb(f"{message.message_id}/thumbnail.jpeg")
                 
                 await pdfMsgId.edit(
-                                   "`Started Uploading..` 📤"
+                                   "`بدأ التحميل ..Started Uploading..` 📤"
                                    )
                 await message.reply_chat_action(
                                                "upload_document"
@@ -402,7 +402,7 @@ async def documents(bot, message):
         elif fileExt.lower() in suprtedPdfFile2:
             if Config.CONVERT_API is None:
                 pdfMsgId = await message.reply_text(
-                                                   "`Owner Forgot to add ConvertAPI.. contact Owner 😒`",
+                                                   "`المالك نسيت إضافة ConvertAPI .. اتصل بالمالك 😒Owner Forgot to add ConvertAPI.. contact Owner 😒`",
                                                    quote = True
                                                    )
                 return 
@@ -410,14 +410,14 @@ async def documents(bot, message):
                 try:
                     PROCESS.append(message.from_user.id)
                     pdfMsgId = await message.reply_to_message.reply_text(
-                                                       "`Downloading your file.. 📥`",
+                                                       "`جارٍ تنزيل ملفك ..Downloading your file.. 📥`",
                                                        quote = True
                                                        )
                     await message.reply_to_message.download(
                                           f"{message.message_id}/{isPdfOrImg}"
                                           )
                     await pdfMsgId.edit(
-                                       "`Work in Progress.. It might take some time..`💛"
+                                       "`جاري العمل .. قد يستغرق بعض الوقت ..\nWork in Progress.. It might take some time.. `💛"
                                        )
                     try:
                         convertapi.convert(
@@ -433,7 +433,7 @@ async def documents(bot, message):
                         try:
                             shutil.rmtree(f"{message.message_id}")
                             await pdfMsgId.edit(
-                                               "ConvertAPI limit reaches.. contact Owner"
+                                               "يصل حد ConvertAPI .. اتصل بالمالك ConvertAPI limit reaches.. contact Owner"
                                                )
                             PROCESS.remove(message.from_user.id)
                             return
@@ -448,7 +448,7 @@ async def documents(bot, message):
                                                 )
                         thumbnail = await formatThumb(f"{message.message_id}/thumbnail.jpeg")
                     await pdfMsgId.edit(
-                                       "`Started Uploading..` 📤"
+                                       "`بدأ التحميل ..Started Uploading..` 📤"
                                        )
                     await message.reply_chat_action(
                                                    "upload_document"
@@ -489,7 +489,7 @@ refreshAnalyse = filters.create(lambda _, __, query: query.data == "refreshAnaly
 async def _refreshGrup(bot, callbackQuery):
     try:
         if callbackQuery.from_user.id != callbackQuery.message.reply_to_message.from_user.id:
-            return await callbackQuery.answer("Message Not For You.. 😏")
+            return await callbackQuery.answer("الرسالة ليست لك ..😏\nMessage Not For You.. 😏")
         
         # CHECK USER IN CHANNEL (REFRESH CALLBACK)
         userStatus = await bot.get_chat_member(
@@ -505,7 +505,7 @@ async def _refreshGrup(bot, callbackQuery):
     except Exception as e:
         try:
             logger.exception(
-                        "»»GROUP:DOCUMENTS:CAUSES %(e)s ERROR",
+                        "»»GROUP:DOCUMENTS:CAUSES %(e)s ERROR خطا",
                         exc_info=True
                         )
             # IF NOT USER ALERT MESSAGE (AFTER CALLBACK)
@@ -522,10 +522,10 @@ async def _asDoc(bot, callbackQuery):
     try:
         if callbackQuery.from_user.id in PROCESS:
             return await callbackQuery.answer(
-                                             "WORK IN PROGRESS..🙇"
+                                             "العمل في التقدمWORK IN PROGRESS..🙇"
                                              )
         await callbackQuery.answer(
-                                  "⚙️ PROCESSING.."
+                                  "⚙️ المعالجة PROCESSING.."
                                   )
         if await header(bot, callbackQuery):
             return
@@ -535,7 +535,7 @@ async def _asDoc(bot, callbackQuery):
                        )
     except Exception:
         logger.exception(
-                        "»»GROUP:DOC:CAUSES %(e)s ERROR",
+                        "»»GROUP:DOC:CAUSES %(e)s ERROR حطا",
                         exc_info=True
                         )
 
