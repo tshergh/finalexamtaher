@@ -30,7 +30,7 @@ async def _spam(bot, message):
                                        "typing"
                                        )
         await message.reply_text(
-                                f"`no one gonna to help you` 😏",
+                                f"` كيف يمكنني  مساعدةno one gonna to help you` 😏",
                                 quote = True
                                 )
     except Exception as e:
