@@ -26,18 +26,27 @@ UPDATE_CHANNEL = Config.UPDATE_CHANNEL
 #--------------->
 #--------> LOCAL VARIABLES
 #------------------->
+UCantUse = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب 🛑"
 
-imageAdded = """`Added {} page/'s to your pdf..`🤓
 
-fileName: `{}.pdf` 🤞"""
+imageAdded = """`تمت إضافة {} صفحة / إلى ملف pdf ..`🤓
+/generate  اضغط لإنشاء ملف PDF 🤞"""
 
-forceSubMsg = """Wait [{}](tg://user?id={})..!!
 
-Due To The Huge Traffic Only Channel Members Can Use this Bot 🚶
+forceSubMsg = """مرحبا [{}](tg://user?id={}) 🤚🏻..!!
+يجب عليك إنضمام الى هذه القناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :
+👇👇👇👇👇👇
+ @i2pdfbotchannel
+وبعدها ارجع للبوت واضغط هذا الامر /start او من ازار اضغط تحديث
+لمتابعة كافة تحديثات البوت
 
-This Means You Need To Join The Below Mentioned Channel for Using Me!
+You must join a channel in order to use the bot. Subscribe to this channel: 
+👇👇👇👇
+ @i2pdfbotchannel
+Then go back to the bot and press this command / start, or from the buttons, press update
+To follow all bot updates`
+"""
 
-hit on "retry ♻️" after joining.. 😅"""
 
 #--------------->
 #--------> REPLY TO IMAGES
@@ -64,16 +73,12 @@ async def images(bot, message):
                 if userStatus.status == 'banned':
                      return await message.reply_photo(
                                                      photo = BANNED_PIC, quote = True,
-                                                     caption = "For Some Reason You Can't Use This Bot"
-                                                               "\n\nContact Bot Owner 🤐",
+                                                     caption = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب\nFor Some Reason You Can't Use This Bot"
+                                                        "\nاتصل بمالك البوت 🤐\nContact Bot Owner 🤐",
                                                      reply_markup = InlineKeyboardMarkup(
-                                                                          [[
-                                                                                 InlineKeyboardButton(
-                                                                                                     "Owner 🎊",
-                                                                                 url="https://t.me/nabilanavab")
-                                                                          ]]
-                                                                    )
-                                                     )
+                                                    [[InlineKeyboardButton("المالك Owner 🎊",
+                                                      url="https://t.me/ta_ja199")]]
+                                              ))
             except Exception:
                 if invite_link == None:
                     invite_link = await bot.create_chat_invite_link(
@@ -85,17 +90,16 @@ async def images(bot, message):
                                          caption = forceSubMsg.format(
                                              message.from_user.first_name, message.chat.id
                                          ),
-                                         reply_markup = InlineKeyboardMarkup(
-                                             [[
-                                                 InlineKeyboardButton("🌟 JOIN CHANNEL 🌟",
-                                                             url = invite_link.invite_link)
-                                             ],[
-                                                 InlineKeyboardButton("Refresh ♻️",
-                                                              callback_data = "refreshImg")
-                                             ]]
-                                         ))
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🌟(JOIN CHANNEL) أنظم في القناة🌟", url=invite_link.invite_link)
+                            ],[
+                                InlineKeyboardButton("تحديث | Refresh ♻️", callback_data="refresh")
+                            ]]
+                    ))
         imageReply = await message.reply_text(
-                                             "`Downloading your Image..⏳`",
+                                             "`تنزيل صورتك(Downloading your Image)..⏳`",
                                              quote=True
                                              )
         if not isinstance(PDF.get(message.chat.id), list):
@@ -115,11 +119,11 @@ async def images(bot, message):
                              reply_markup = InlineKeyboardMarkup(
                                                                 [[
                                                                     InlineKeyboardButton(
-                                                                                        "GENERATE 📚",
+                                                                                        "GENERATE 📚انشاء",
                                                                                         callback_data="generate"
                                                                                         ),
                                                                     InlineKeyboardButton(
-                                                                                        "RENAME ✍️",
+                                                                                        "RENAME ✍️ إعادة تسمية",
                                                                                         callback_data="generateREN"
                                                                                         )
                                                                 ]]
@@ -128,7 +132,7 @@ async def images(bot, message):
     
     except Exception as e:
         logger.exception(
-                        "PHOTO:CAUSES %(e)s ERROR",
+                        "PHOTO:CAUSES %(e)s ERROR خطا",
                         exc_info=True
                         )
 
