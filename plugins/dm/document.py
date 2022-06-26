@@ -175,12 +175,12 @@ async def documents(bot, message):
                 if userStatus.status == 'banned':
                      await message.reply_photo(
                                          photo = BANNED_PIC,
-                                         caption = "For Some Reason You Can't Use This Bot"
-                                                  "\n\nContact Bot Owner 🤐",
-                                         reply_markup = InlineKeyboardMarkup(
-                                             [[InlineKeyboardButton("Owner 🎊",
-                                              url = "https://t.me/nabilanavab")]]
-                                         ))
+                                              caption = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب\nFor Some Reason You Can't Use This Bot"
+                                                        "\nاتصل بمالك البوت 🤐\nContact Bot Owner 🤐",
+                                              reply_markup = InlineKeyboardMarkup(
+                                                    [[InlineKeyboardButton("المالك Owner 🎊",
+                                                      url="https://t.me/ta_ja199")]]
+                                              ))
                      return
             except Exception:
                 if invite_link == None:
@@ -193,23 +193,23 @@ async def documents(bot, message):
                                                                 message.from_user.first_name,
                                                                 message.from_user.id
                                                                 ),
-                                    reply_markup = InlineKeyboardMarkup(
-                                         [[
-                                               InlineKeyboardButton("🌟 JOIN CHANNEL 🌟",
-                                                             url=invite_link.invite_link)
-                                         ],[
-                                               InlineKeyboardButton("Refresh ♻️",
-                                                      callback_data="refreshDoc")
-                                         ]]
-                                    ))
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🌟(JOIN CHANNEL) أنظم في القناة🌟", url=invite_link.invite_link)
+                            ],[
+                                InlineKeyboardButton("تحديث | Refresh ♻️", callback_data="refresh")
+                            ]]
+                    ))
+        
                 return
         
         if message.from_user.id in PROCESS:
             return await message.reply(
-                                      "WORK IN PROGRESS 🙇", quote = True,
+                                      "العمل قيد التقدم ..WORK IN PROGRESS.. 🙇", quote = True,
                                       reply_markup = InlineKeyboardMarkup(
                                           [[
-                                              InlineKeyboardButton("♻️ Try Again ♻️",
+                                              InlineKeyboardButton("♻️ Try Again حاول مجددا♻️",
                                                             callback_data="asnewDoc")
                                           ]]
                                       ))
@@ -226,8 +226,8 @@ async def documents(bot, message):
                                 ),
                                 reply_markup = InlineKeyboardMarkup(
                                      [[
-                                          InlineKeyboardButton("💎 Create 2Gb Support Bot 💎",
-                                                url="https://github.com/nabilanavab/ilovepdf")
+                                          InlineKeyboardButton("💎تقييم البوت rate bot 💎",
+                                                url="https://t.me/i2pdfbotchannel")
                                      ]]
                                 ))
             return
@@ -256,11 +256,11 @@ async def documents(bot, message):
                                         reply_markup = InlineKeyboardMarkup(
                                                                            [[
                                                                                InlineKeyboardButton(
-                                                                                                   "GENERATE 📚",
+                                                                                                   "GENERATE 📚انشاء",
                                                                                                    callback_data="generate"
                                                                                                    ),
                                                                                InlineKeyboardButton(
-                                                                                                   "RENAME ✍️",
+                                                                                                   "RENAME ✍️ إعادة تسمية",
                                                                                                    callback_data="generateREN"
                                                                                                    )
                                                                            ]]
@@ -274,11 +274,11 @@ async def documents(bot, message):
         # REPLY TO .PDF FILE EXTENSION
         elif fileExt.lower() == ".pdf":
             pdfMsgId = await message.reply_text(
-                                               "⚙️ Processing.",
+                                               "⚙️معالجة Processing.",
                                                quote = True
                                                )
             await asyncio.sleep(0.5)
-            await pdfMsgId.edit("⚙️ Processing..")
+            await pdfMsgId.edit("⚙️معالجة Processing..")
             await asyncio.sleep(0.5)
             await pdfMsgId.edit(
                                text = pdfReplyMsg.format(
@@ -294,7 +294,7 @@ async def documents(bot, message):
             try:
                 PROCESS.append(message.from_user.id)
                 pdfMsgId = await message.reply_text(
-                                                   "`Downloading your file..` 📥",
+                                                   "`تنزيل ملفك Downloading your file..` 📥",
                                                    quote = True
                                                    )
                 input_file = f"{message.message_id}/{isPdfOrImg}"
@@ -316,7 +316,7 @@ async def documents(bot, message):
                     return
                 
                 await pdfMsgId.edit(
-                                   "`Work in Progress..`\nIt might take some time.. 💛`"
+                                   "`جاري العمل .. قد يستغرق بعض الوقت ..\nWork in Progress.. It might take some time.. 💛`"
                                    )
                 Document = fitz.open(input_file)
                 b = Document.convert_to_pdf()
@@ -338,7 +338,7 @@ async def documents(bot, message):
                     thumbnail = await formatThumb(f"{message.message_id}/thumbnail.jpeg")
                 
                 await pdfMsgId.edit(
-                                   "`Started Uploading..`📤"
+                                   "`بدأ التحميل (Started Uploading)..`📤"
                                    )
                 await message.reply_chat_action(
                                                "upload_document"
@@ -348,7 +348,7 @@ async def documents(bot, message):
                                             file_name = f"{fileName}.pdf",
                                             document = open(f"{message.message_id}/{fileNm}.pdf", "rb"),
                                             thumb = thumbnail,
-                                            caption = f"`Converted: {fileExt} to pdf`",
+                                            caption=f"` تم تحويل ملفك: {fileExt} إالى pdf` \n`Converted: {fileExt} to pdf`",
                                             quote = True,
                                             progress = uploadProgress,
                                             progress_args = (
@@ -362,7 +362,7 @@ async def documents(bot, message):
                 shutil.rmtree(f"{message.message_id}")
             except Exception as e:
                 logger.exception(
-                        "AS_NEW_DOC:CAUSES %(e)s ERROR",
+                        "AS_NEW_DOC:CAUSES %(e)s ERROR خطا",
                         exc_info=True
                         )
                 try:
@@ -378,7 +378,7 @@ async def documents(bot, message):
         elif fileExt.lower() in suprtedPdfFile2:
             if not Config.CONVERT_API:
                 pdfMsgId = await message.reply_text(
-                                                   "`Owner Forgot to add ConvertAPI.. contact Owner 😒`",
+                                                   "`Owner Forgot to add ConvertAPI.. contact Owner المالك نسيت إضافة ConvertAPI .. اتصل بالمالك 😒😒`",
                                                    quote = True
                                                    )
                 return 
@@ -388,7 +388,7 @@ async def documents(bot, message):
                     input_file = f"{message.message_id}/{isPdfOrImg}"
                     
                     pdfMsgId = await message.reply_text(
-                                                       "`Downloading your file..` 📥",
+                                                       "`تحميل ملفك (Downloading your file) ..⏳` 📥",
                                                        quote = True
                                                        )
                     # DOWNLOAD PROGRESS
@@ -409,7 +409,7 @@ async def documents(bot, message):
                         return
                     
                     await pdfMsgId.edit(
-                                       "`Work in Progress..`\n`It might take some time..`💛"
+                                       "`جاري العمل .. قد يستغرق بعض الوقت ..\nWork in Progress.. It might take some time.. `💛"
                                        )
                     try:
                         convertapi.convert(
@@ -424,7 +424,7 @@ async def documents(bot, message):
                     except Exception:
                         try:
                             await pdfMsgId.edit(
-                                               "ConvertAPI limit reaches.. contact Owner"
+                                               "يصل حد ConvertAPI .. اتصل بالمالك ConvertAPI limit reaches.. contact Owner"
                                                )
                             shutil.rmtree(f"{message.message_id}")
                             PROCESS.remove(message.from_user.id)
@@ -440,7 +440,7 @@ async def documents(bot, message):
                                                 )
                         thumbnail = await formatThumb(f"{message.message_id}/thumbnail.jpeg")
                     await pdfMsgId.edit(
-                                       "`Started Uploading..`📤"
+                                       "`بدأ التحميل (Started Uploading)..`📤"
                                        )
                     await message.reply_chat_action(
                                                    "upload_document"
@@ -449,7 +449,7 @@ async def documents(bot, message):
                                                 file_name = f"{fileNm}.pdf",
                                                 document = open(f"{message.message_id}/{fileNm}.pdf", "rb"),
                                                 thumb = thumbnail,
-                                                caption = f"`Converted: {fileExt} to pdf`",
+                                                caption=f"` تم تحويل ملفك: {fileExt} إالى pdf` \n`Converted: {fileExt} to pdf`",
                                                 quote = True
                                                 )
                     await pdfMsgId.delete();
@@ -463,14 +463,14 @@ async def documents(bot, message):
         else:
             try:
                 await message.reply_text(
-                                        "`unsupported file..🙄`",
+                                        "` ملفك غير مدعم unsupported file..🙄`",
                                         quote = True
                                         )
             except Exception:
                 pass
     except Exception as e:
         logger.exception(
-                        "DOCUMENTS:CAUSES %(e)s ERROR",
+                        "DOCUMENTS:CAUSES %(e)s ERROR خطا ",
                         exc_info=True
                         )
 
@@ -479,10 +479,10 @@ async def _asNewDoc(bot, callbackQuery):
     try:
         if callbackQuery.from_user.id in PROCESS:
             return await callbackQuery.answer(
-                                             "WORK IN PROGRESS..🙇"
+                                             "جاري العمل WORK IN PROGRESS..🙇"
                                              )
         await callbackQuery.answer(
-                                  "⚙️ PROCESSING.."
+                                  "⚙️المعالجة PROCESSING.."
                                   )
         if await header(bot, callbackQuery):
             return
@@ -492,7 +492,7 @@ async def _asNewDoc(bot, callbackQuery):
                        )
     except Exception as e:
         logger.exception(
-                        "AS_NEW_DOC:CAUSES %(e)s ERROR",
+                        "AS_NEW_DOC:CAUSES %(e)s ERROR خطا في",
                         exc_info=True
                         )
 
