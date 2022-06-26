@@ -36,18 +36,18 @@ async def _banUser(bot, message):
     try:
         if not isMONGOexist:
             await message.reply(
-                               "Sry, Bot Don't have a DB",
+                               "Sry ، Bot ليس لديك قاعدة بيانات",
                                quote = True
                                )
             return
         procs = await message.reply(
-                                   "⚙️ Processing.",
+                                   "⚙️ المعالجة Processing.",
                                    quote = True
                                    )
         await sleep(1)
         if len(message.command) == 1:
             return await procs.edit(
-                                   "Give me a user id / username"
+                                   "أعطني معرف المستخدم / اسم المستخدم Give me a user id / username"
                                    )
         reM = message.text.split(None)
         if len(reM) > 2:
