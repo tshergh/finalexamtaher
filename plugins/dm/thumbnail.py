@@ -39,7 +39,7 @@ async def _thumbnail(bot, message):
         if not isMONGOexist:
             # if No mongoDB Url
             await message.reply(
-                               "Can't Use This Feature 🤧",
+                               " لا يمكن استخدام هذه الميزة Can't Use This Feature 🤧",
                                quote = True
                                )
             return
@@ -53,7 +53,7 @@ async def _thumbnail(bot, message):
                                                )
                 if userStats.status not in ["administrator", "creator"]:
                     return await message.reply(
-                                              "U Can't do it Vroh.. 🤧"
+                                              "لا تستطيع أن تفعل ذلك U Can't do it.. 🤧"
                                               )
         if message.reply_to_message and message.reply_to_message.photo:
             # set thumbnail
@@ -69,10 +69,10 @@ async def _thumbnail(bot, message):
                                         )
             await message.reply_photo(
                                      photo = message.reply_to_message.photo.file_id,
-                                     caption = "Okay,\n"
-                                              "I will use this image as custom thumbnail.. 🖐️",
+                                     caption = "اوكي Okay,\n"
+                                              "سأستخدم هذه الصورة كصورة مصغرة مخصصة ..\n I will use this image as custom thumbnail.. 🖐️",
                                      reply_markup = InlineKeyboardMarkup(
-                                              [[InlineKeyboardButton("Delete Thumbnail",
+                                              [[InlineKeyboardButton("Delete Thumbnail حذف صورة",
                                                        callback_data = "delThumb")]]
                                      ),
                                      quote = True
@@ -85,8 +85,8 @@ async def _thumbnail(bot, message):
         else:
             if (message.chat.id not in CUSTOM_THUMBNAIL_U) and (message.chat.id not in CUSTOM_THUMBNAIL_C):
                 return await message.reply(
-                                          "You didn't set custom thumbnail!\n"
-                                          "reply /thumbnail to set thumbnail",
+                                          "لم تقم بتعيين صورة مصغرة مخصصة\n You didn't set custom thumbnail!\n"
+                                          "reply رد /thumbnail to set thumbnail لتعيين صورة مصغرة",
                                           quote = True
                                           )
             # Get Thumbnail from DB
@@ -104,7 +104,7 @@ async def _thumbnail(bot, message):
                                      caption = "Custom Thumbnail",
                                      quote = True,
                                      reply_markup = InlineKeyboardMarkup(
-                                            [[InlineKeyboardButton("Delete Thumbnail",
+                                            [[InlineKeyboardButton("Delete Thumbnail حذف مصغرة",
                                                    callback_data = "delThumb")]]
                                      ))
             return
@@ -124,12 +124,12 @@ async def _getThumb(bot, callbackQuery):
         chat_type = callbackQuery.message.chat.type
         if not isMONGOexist:
             await callbackQuery.answer(
-                                      "Can't Use This Feature 🤧"
+                                      " لايمكن استخدام هذه الميزة Use This Feature 🤧"
                                       )
             return
         else:
             await callbackQuery.answer(
-                                      "wait.! Let me think.. 🤔"
+                                      "انتظر.!  دعني أفكر.wait.! Let me think.. 🤔"
                                       )
             
             if callbackQuery.message.chat.id in CUSTOM_THUMBNAIL_U:
@@ -147,43 +147,43 @@ async def _getThumb(bot, callbackQuery):
                 await callbackQuery.edit_message_media(InputMediaPhoto(PDF_THUMBNAIL))
                 if chat_type == "private":
                     reply_markup = InlineKeyboardMarkup(
-                                        [[InlineKeyboardButton("😒 ADD THUMB 😒",
+                                        [[InlineKeyboardButton("😒 ADD THUMB اضف ثيم😒",
                                                        callback_data = "addThumb")],
-                                         [InlineKeyboardButton("« BACK «",
+                                         [InlineKeyboardButton("« BACK عودة«",
                                                           callback_data = "back")]]
                                    )
                 else:
                     reply_markup = InlineKeyboardMarkup(
-                                        [[InlineKeyboardButton("« BACK «",
+                                        [[InlineKeyboardButton("« BACK عودة«",
                                                           callback_data = "back")]]
                                    )
                 await callbackQuery.edit_message_caption(
-                                                        caption = "🌟 CURRENT THUMBNAIL 🌟 (DEFAULT)\n\n"
-                                                                  "You didn't set any custom thumbnail!\n\n"
-                                                                  "/thumbnail :\n◍ To get current thumbnail\n"
-                                                                  "◍ Reply to a photo to set custom thumbnail",
+                                                        caption = "🌟 الصورة المصغرة الحالية 🌟 (افتراضي)\n🌟 CURRENT THUMBNAIL 🌟 (DEFAULT)\n\n"
+                                                                  "لم تقم بتعيين أي صورة مصغرة مخصصة\nYou didn't set any custom thumbnail!\n\n"
+                                                                  "/thumbnail:\n◍ للحصول على الصورة المصغرة الحالية\nTo get current thumbnail\n"
+                                                                  "◍الرد على صورة لتعيين صورة مصغرة مخصصة\nReply to a photo to set custom thumbnail",
                                                         reply_markup = reply_markup
                                                         )
                 return
             await callbackQuery.edit_message_media(InputMediaPhoto(thumbnail))
             if chat_type == "private":
                 reply_markup = InlineKeyboardMarkup(
-                                     [[InlineKeyboardButton("🥲 CHANGE 🥲",
+                                     [[InlineKeyboardButton("🥲 CHANGE  إلغاء 🥲",
                                                 callback_data = "addThumb"),
-                                       InlineKeyboardButton("🤩 DELETE 🤩",
+                                       InlineKeyboardButton("🤩 DELETE حذف 🤩",
                                                 callback_data = "delThumb")],
-                                      [InlineKeyboardButton("« BACK «",
+                                      [InlineKeyboardButton("« BACK عودة«",
                                                 callback_data = "back")]]
                                )
             else:
                 reply_markup = InlineKeyboardMarkup(
-                                     [[InlineKeyboardButton("« BACK «",
+                                     [[InlineKeyboardButton("« BACK عودة «",
                                                 callback_data = "back")]]
                                )
             await callbackQuery.edit_message_caption(
-                                                    caption = "🌟 CURRENT THUMBNAIL 🌟\n\n"
-                                                              "/thumbnail :\n◍ To get current thumbnail\n"
-                                                              "◍ Reply to a photo to set custom thumbnail",
+                                                    caption = "🌟 CURRENT THUMBNAIL  الصورة المصغرة الحالية🌟\n\n"
+                                                              "/thumbnail :\n◍للحصول على الصورة المصغرة الحالية\nTo get current thumbnail\n"
+                                                              "◍الرد على صورة لتعيين صورة مصغرة مخصصة\nReply to a photo to set custom thumbnail",
                                                     reply_markup = reply_markup)
             return
     except Exception as e:
@@ -260,19 +260,19 @@ async def _delThumb(bot, callbackQuery):
                                                )
                 if userStats.status not in ["administrator", "creator"]:
                     return await callbackQuery.answer(
-                                              "U Can't do it Vroh.. 🤧"
+                                              "لا تستطيع  U Can't do it Vroh.. 🤧"
                                               )
         if (callbackQuery.message.chat.id not in CUSTOM_THUMBNAIL_U) and (
             callbackQuery.message.chat.id not in CUSTOM_THUMBNAIL_C):
             await callbackQuery.answer(
-                                      "Currently, you don't set a thumbnail yet.. 🤧"
+                                      "حاليًا ، لم تقم بتعيين صورة مصغرة بعدCurrently, you don't set a thumbnail yet.. 🤧"
                                       )
             return await callbackQuery.edit_message_reply_markup(
                   InlineKeyboardMarkup([[
-                      InlineKeyboardButton("🤜🏻 DELETED 🤛🏻",
+                      InlineKeyboardButton("🤜🏻 DELETED حذف🤛🏻",
                           callback_data = "nabilanavab")]]))
         await callbackQuery.answer(
-                                  "Deleting.. 🤬"
+                                  "حذف Deleting..  🤬"
                                   )
         
         if chat_type == "private":
@@ -288,7 +288,7 @@ async def _delThumb(bot, callbackQuery):
         else:
             await callbackQuery.edit_message_reply_markup(
                   InlineKeyboardMarkup([[
-                      InlineKeyboardButton("🤜🏻 DELETED 🤛🏻",
+                      InlineKeyboardButton("🤜🏻 DELETED حذف🤛🏻",
                           callback_data = "nabilanavab")]]))
             await db.set_group_thumb(
                                     callbackQuery.message.chat.id,
