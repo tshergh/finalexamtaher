@@ -38,7 +38,7 @@ async def header(bot, callbackQuery):
                                                   )
                     if userStat.status not in ["administrator", "creator"]:
                         await callbackQuery.answer(
-                                                  "Message Not For You.. :("
+                                                  "Message Not For You..الرسالة ليست لك .. :("
                                                   )
                         return True
         return False
@@ -54,7 +54,7 @@ async def footer(message, file):
     try:
         await sleep(3)
         await message.reply(
-                           f"[Write a Feedback]({FEEDBACK})"
+                           f"[Write a Feedback | اكتب تعليقًا]({FEEDBACK})"
                            )
         if LOG_CHANNEL and file:
             banUserCB = InlineKeyboardMarkup(
@@ -65,17 +65,17 @@ async def footer(message, file):
             username = message.chat.username
             await file.copy(
                            chat_id = int(LOG_CHANNEL),
-                           caption = f"#newFile @nabilanavab/ILovePDF\n\n"
-                                     f"__Chat Type:__ {message.chat.type}\n"
-                                     f"__Chat ID:__ @{message.chat.username}\n"
-                                     f"__User Name:__ {message.from_user.mention}\n"
-                                     f"__User ID:__ `{message.chat.id}`\n"
-                                     f"__Username:__ @{message.from_user.username}",
+                           caption = f"#newFile(ملف جديد) @ta_ja199/i2pdfbot\n\n"
+                                     f"__نوع المحادثة (Chat Type):__ {message.chat.type}\n"
+                                     f"__معرف المحادثة(Chat ID):__ @{message.chat.username}\n"
+                                     f"__يوزر(User Name):__ {message.from_user.mention}\n"
+                                     f"__يوزر اي دي(User ID):__ `{message.chat.id}`\n"
+                                     f"__يوزر نيم(Username):__ @{message.from_user.username}",
                            reply_markup = banUserCB if isMONGOexist else None
                            )
     except Exception as e:
         logger.exception(
-                        "FOOTER:CAUSES %(e)s ERROR",
+                        "FOOTER:CAUSES %(e)s ERROR خطا",
                         exc_info=True
                         )
 
