@@ -46,19 +46,19 @@ BANNED_USERS = Config.BANNED_USERS
 ADMIN_ONLY = Config.ADMIN_ONLY
 ADMINS = Config.ADMINS
 
-UCantUse = "Hey {}\nFOR SOME REASON YOU CANT USE THIS BOT :("
+UCantUse = "Heyهلو {}\nلبعض الأسباب التي تجعلك لا تستطيع استخدام هذا الروبوت :("
 
-GroupCantUse = "{} NEVER EXPECT A GOOD RESPONSE FROM ME\n\nADMINS RESTRICTED ME FROM WORKING HERE.. 🤭"
+GroupCantUse = "{} لا تتوقع أبدًا ردًا جيدًا مني\n\nمنعني المشرفون من العمل هنا ..\n\nNEVER EXPECT A GOOD RESPONSE FROM ME\n\nADMINS RESTRICTED ME FROM WORKING HERE.. 🤭"
 
 button = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("Create your Own Bot",
-               url="https://github.com/nabilanavab/ilovepdf")
+            InlineKeyboardButton("Dev bot مطور",
+               url="telegram.dog/ta_ja199")
         ],[
-            InlineKeyboardButton("Tutorial",
-                                     url="t.me/ilovepdf_bot"),
+            InlineKeyboardButton("تقييم البوت",
+                                     url="https://telegramic.org/bot/i2pdfbot/"),
             InlineKeyboardButton("Update Channel",
-                             url="telegram.dog/ilovepdf_bot")
+                             url="telegram.dog/i2pdfbotchannel")
         ]]
     )
 
@@ -186,15 +186,15 @@ async def broadcast_messages(user_id, message, info):
 async def _broadcast(bot, message):
     try:
         procs = await message.reply(
-                                   "⚙️ __Processing..__", quote=True
+                                   "⚙️ __يعالج Processing..__", quote=True
                                    )
         if not message.reply_to_message:
             return await procs.edit(
-                                   "__Please Reply To A Messge__ 🤫"
+                                   "__الرجاء الرد على الرسالة Please Reply To A Messge__ 🤫"
                                    )
         if not isMONGOexist:
             return await procs.edit(
-                                   "Sorry.! I can't remember my Userlist 😲"
+                                   "آسف.! لا أستطيع تذكر قائمة المستخدمين الخاصة بي Sorry.! I can't remember my Userlist 😲"
                                    )
         await asyncio.sleep(1)
         if len(message.command) == 2:
@@ -202,22 +202,22 @@ async def _broadcast(bot, message):
             if info not in ["f", "c"]:
                 return await procs.edit(
                                        "🥴 Syntax Error:\n\n"
-                                       "`/broadcast f`: broadcast message [with quotes]\n"
-                                       "`/broadcast c`: broadcast as copy [without quotes]"
+                                       "`/broadcast f`: رسالة إذاعية [مع اقتباسات]\n\nbroadcast message [with quotes]\n"
+                                       "`/broadcast c`: البث كنسخة [بدون علامات اقتباس]\n\nbroadcast as copy [without quotes]"
                                        )
         else:
             return await procs.edit(
                                    "🥴 Syntax Error:\n\n"
-                                   "`/broadcast f`: broadcast message [with quotes]\n"
-                                   "`/broadcast c`: broadcast as copy [without quotes]"
+                                    "`/broadcast f`: رسالة إذاعية [مع اقتباسات]\n\nbroadcast message [with quotes]\n"
+                                    "`/broadcast c`: البث كنسخة [بدون علامات اقتباس]\n\nbroadcast as copy [without quotes]"
                                    )
         users = await db.get_all_users()
         broadcast_msg = message.reply_to_message
         await procs.edit(
-                        text = "__⚙️ Broadcasting your messages...__",
+                        text = "__⚙️ بث رسائلك Broadcasting your messages...__",
                         reply_markup = InlineKeyboardMarkup(
                               [[InlineKeyboardButton(
-                                    "↩️ asForward ↩️" if info=="f" else "👀 asCopy 👀", callback_data="air"
+                                    "↩️ asForward  توجية↩️" if info=="f" else "👀 asCopy  كنسخ👀", callback_data="air"
                               )]]
                         ))
         start_time = time.time()
@@ -238,26 +238,25 @@ async def _broadcast(bot, message):
             await asyncio.sleep(2)
             if not done % 20:
                 await procs.edit(
-                                text = f"`Broadcast in progress:`\n"
-                                       f"__Total Users:__ {total_users}\n"
-                                       f"__Completed:__   {done} / {total_users}\n"
-                                       f"__Success:__     {success}\n"
-                                       f"__Blocked:__     {blocked}\n"
-                                       f"__Deleted:__     {deleted}\n",
+                                text = f"`البث قيد التقدم(Broadcast in progress):`\n"
+                                       f"__عدد المستخدمين(Total Users):__ {total_users}\n"
+                                       f"__مكتمل (Completed):__   {done} / {total_users}\n"
+                                       f"__بنجاح (Success):__     {success}\n"
+                                       f"__محظورين (Blocked):__     {blocked}\n"
+                                       f"__ محظوفين (Deleted):__     {deleted}\n",
                                 reply_markup = InlineKeyboardMarkup(
                                        [[InlineKeyboardButton(
-                                            "↩️ asForward ↩️" if info=="f" else "👀 asCopy 👀", callback_data="air"
+                                            "↩️ asForward  كتوجية↩️" if info=="f" else "👀 asCopy  كنسخ 👀", callback_data="air"
                                        )]]
                                 ))
         time_taken=datetime.timedelta(seconds=int(time.time()-start_time))
         await procs.edit(
-                        f"`Broadcast Completed:`\n"
-                        f"__Completed in__ {time_taken} __seconds.__\n\n"
-                        f"__Total Users:__ {total_users}\n"
-                        f"__Completed:__   {done} / {total_users}\n"
-                        f"__Success:__     {success}\n"
-                        f"__Blocked:__     {blocked}\n"
-                        f"__Deleted:__     {deleted}"
+                        text = f"`البث قيد التقدم(Broadcast in progress):`\n"
+                               f"__عدد المستخدمين(Total Users):__ {total_users}\n"
+                               f"__مكتمل (Completed):__   {done} / {total_users}\n"
+                               f"__بنجاح (Success):__     {success}\n"
+                               f"__محظورين (Blocked):__     {blocked}\n"
+                               f"__ محظوفين (Deleted):__     {deleted}\n",
                         )
     except Exception as e:
         logger.exception(
@@ -275,17 +274,17 @@ async def _broadcast(bot, message):
 async def _message(bot, message):
     try:
         procs = await message.reply(
-                                   "⚙️ Processing..",
+                                   "⚙️المعالجة Processing..",
                                    quote = True
                                    )
         await asyncio.sleep(1)
         if not message.reply_to_message:
             return await procs.edit(
-                                   "__Please Reply To A Message..__ 🤧"
+                                   "__ ارجوا الرد على رسالةPlease Reply To A Message ..__ 🤧"
                                    )
         if len(message.command) == 1:
             return await procs.edit(
-                                   "Give me a user id / username"
+                                   "أعطني معرف المستخدم / اسم المستخدم Give me a user id / username"
                                    )
         reM = message.text.split(None)
         if len(reM) == 3:
@@ -293,8 +292,8 @@ async def _message(bot, message):
             info = message.text.split(None, 2)[1]
             if info not in ["c", "f"]:
                 return await procs.edit(
-                                       "__Please Use__ `c`:copy or `f`:forward"
-                                       "\n__Nothing Else Is Supposed__"
+                                       "__يرجى استخدامPlease Use__ `c`:copy نسخ or `f`:forward توجية"
+                                       "\n__لا شيء آخر يُفترض Nothing Else Is Supposed__"
                                        )
         else:
             chat = message.command[1]
@@ -307,7 +306,7 @@ async def _message(bot, message):
             userINFO = await bot.get_users(chat)
         except Exception as e:
             return await procs.edit(
-                                   f"__Can't forward message__"
+                                   f"__لا يمكن إعادة توجيه الرسالةCan't forward message__"
                                    f"\n__REASON:__ `{e}`"
                                    )
         forward_msg = message.reply_to_message
@@ -318,12 +317,12 @@ async def _message(bot, message):
                 await forward_msg.forward(userINFO.id)
         except Exception:
             return await procs.edit(
-                                   f"__Can't forward message__"
+                                   f"__لا يمكن إعادة توجيه الرسالةCan't forward message__"
                                    f"\n__REASON:__ `{e}`"
                                    )
         else:
             return await procs.edit(
-                                   "Successfully forwarded"
+                                   "تمت إعادة التوجيه بنجاح (Successfully forwarded)"
                                    )
     except Exception as e:
         logger.exception(
@@ -351,18 +350,18 @@ async def server(bot, message):
         else:
             total_users = "No DB"; total_chats="No DB"
         await message.reply_text(
-                            text=f"**◍ Total Space     :** `{total}` \n"
-                                 f"**◍ Used Space     :** `{used}({disk_usage}%)` \n"
-                                 f"**◍ Free Space      :** `{free}` \n"
-                                 f"**◍ CPU Usage      :** `{cpu_usage}`% \n"
-                                 f"**◍ RAM Usage     :** `{ram_usage}`%\n"
-                                 f"**◍ Current Work  :** `{len(PROCESS)}`\n"
-                                 f"**◍ DB Users         :** `{total_users}`\n"
-                                 f"**◍ DB Grups         :** `{total_chats}`\n"
-                                 f"**◍ Message Id     :** `{message.message_id}`",
+                            text=f"**◍ Total Space(المساحة الكلية)     :** `{total}` \n"
+                                 f"**◍ Used Space(مساحه مستخدمه)     :** `{used}({disk_usage}%)` \n"
+                                 f"**◍ Free Space (مساحة فارغة)     :** `{free}` \n"
+                                 f"**◍ CPU Usage  (استخدام المعالج)    :** `{cpu_usage}`% \n"
+                                 f"**◍ RAM Usage (استخدام ذاكرة الوصول العشوائي)    :** `{ram_usage}`%\n"
+                                 f"**◍ Current Work (العمل الجاري)  :** `{len(PROCESS)}`\n"
+                                 f"**◍ DB Users   (مستخدمو DB)      :** `{total_users}`\n"
+                                 f"**◍ DB Grups   (مجموعات DB)      :** `{total_chats}`\n"
+                                 f"**◍ Message Id  (معرف الرسالة)   :** `{message.message_id}`",
                             reply_markup = InlineKeyboardMarkup(
                                  [[
-                                     InlineKeyboardButton("⟨ CLOSE ⟩",
+                                     InlineKeyboardButton("⟨ CLOSE اغلق ⟩",
                                             callback_data = "closeALL")
                                  ]]
                                  ),
@@ -383,11 +382,11 @@ async def server(bot, message):
 async def _adminList(bot, message):
     try:
         procs = await message.reply(
-                                   "⚙️ Processing..",
+                                   "⚙️ معالجة Processing..",
                                    quote = True
                                    )
         await asyncio.sleep(1)
-        msg = f"**Total ADMIN:** __{len(ADMINS)}__\n"
+        msg = f"**Total ADMIN عدد المشرفين:** __{len(ADMINS)}__\n"
         await procs.edit(msg)
         for admin in ADMINS:
             try:
