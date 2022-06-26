@@ -69,81 +69,78 @@ suprtedPdfFile2 = [
 #--------> LOCAL VARIABLES
 #------------------->
 
-pdfReplyMsg = """`What shall i do with this file.?`
+pdfReplyMsg = """`ماذا تريد أن أفعل بهذا الملف.؟ \n What shall i wanted to do with this file.?`
+File name(اسم الملف) : `{}`
+File Size(حجم الملف) : `{}`"""
 
-File Name : `{}`
-File Size : `{}`"""
 
-bigFileUnSupport = """Due to Overload, Owner limits {}mb for pdf files 🙇
+bigFileUnSupport = """Due to Overload(بسبب التحميل الزائد), Owner limits(حدد المطور) {}MB for pdf files(لكل ملفات) 🙇
+`please Send me a file less than(لي ملف حجمه أقل من ) {}MB ` 🙃"""
 
-`please Send me a file less than {}mb Size` 🙃"""
 
-imageAdded = """`Added {} page/'s to your pdf..`🤓
+imageAdded = """`تمت إضافة {} صفحة / إلى ملف pdf ..`🤓
+/generate  اضغط لإنشاء ملف PDF 🤞"""
 
-/generate to generate PDF 🤞"""
 
-errorEditMsg = """Something went wrong..😐
+errorEditMsg = """حدث خطأ ما ..😐 Something went wrong..😐
+error: `{}`
+Dev&eng: @ta_ja199 👨‍💻"""
 
-ERROR: `{}`
 
-For bot updates join @ilovepdf_bot"""
+feedbackMsg = "[🌟Rate:تقييم🌟](https://telegramic.org/bot/i2pdfbot/)"
 
-forceSubMsg = """Wait [{}](tg://user?id={})..!!
+forceSubMsg ="""مرحبا [{}](tg://user?id={}) 🤚🏻..!!
+يجب عليك إنضمام الى هذه القناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :
+👇👇👇👇👇👇
+ @i2pdfbotchannel
+وبعدها ارجع للبوت واضغط هذا الامر /start او من ازار اضغط تحديث
+لمتابعة كافة تحديثات البوت
 
-Due To The Huge Traffic Only Channel Members Can Use this Bot 🚶
+You must join a channel in order to use the bot. Subscribe to this channel: 
+👇👇👇👇
+ @i2pdfbotchannel
+Then go back to the bot and press this command / start, or from the buttons, press update
+To follow all bot updates`
+"""
 
-This Means You Need To Join The Below Mentioned Channel for Using Me!
 
-hit on "retry ♻️" after joining.. 😅"""
-
-foolRefresh = "വിളച്ചിലെടുക്കല്ലേ കേട്ടോ 😐"
+foolRefresh = "انظم اولا join frist"
 
 #--------------->
 #--------> PDF REPLY BUTTON
 #------------------->
 
-pdfReply = InlineKeyboardMarkup(
-        [[
-            InlineKeyboardButton("⭐ META£ATA ⭐", 
-                             callback_data="pdfInfo"),
-            InlineKeyboardButton("🗳️ PREVIEW 🗳️",
-                             callback_data="preview")
-        ],[
-            InlineKeyboardButton("🖼️ IMAGES 🖼️",
-                             callback_data="toImage"),
-            InlineKeyboardButton("✏️ TEXT ✏️",
-                              callback_data="toText")
-        ],[
-            InlineKeyboardButton("🔐 ENCRYPT 🔐",
-                             callback_data="encrypt"),
-            InlineKeyboardButton("🔒 DECRYPT 🔓",
-                             callback_data="decrypt")
-        ],[
-            InlineKeyboardButton("🗜️ COMPRESS 🗜️",
-                            callback_data="compress"),
-            InlineKeyboardButton("🤸 ROTATE 🤸",
-                              callback_data="rotate")
-        ],[
-            InlineKeyboardButton("✂️ SPLIT ✂️",
-                               callback_data="split"),
-            InlineKeyboardButton("🧬 MERGE 🧬",
-                               callback_data="underDev")
-        ],[
-            InlineKeyboardButton("™️ STAMP ™️",
-                               callback_data="stamp"),
-            InlineKeyboardButton("✏️ RENAME ✏️",
-                              callback_data="rename")
-        ],[
-            InlineKeyboardButton("📝 OCR 📝",
-                                 callback_data="ocr"),
-            InlineKeyboardButton("🥷 A4 FORMAT 🥷",
-                              callback_data="format")
-        ],[
-            InlineKeyboardButton("🚫 CLOSE 🚫",
-                            callback_data="closeALL")
-        ]]
+pdfReply=InlineKeyboardMarkup(
+        [
+            [
+                InlineKeyboardButton("⭐️ معلومات|info ⭐️", callback_data="pdfInfo"),
+                InlineKeyboardButton("🗳 معاينة | preview🗳", callback_data="preview")
+            ],[
+                InlineKeyboardButton("🖼 الى صور | toImage 🖼", callback_data="toImage"),
+                InlineKeyboardButton("✏️ الى نص totext✏️", callback_data="toText")
+            ],[
+                InlineKeyboardButton("🔐 تشفير | ENCRYPT 🔐", callback_data="encrypt"),
+                InlineKeyboardButton("🔒 فك تشفير | DECRYPT🔓",callback_data="decrypt")
+            ],[
+                InlineKeyboardButton("🗜 ضغط | COMPRESS 🗜", callback_data="compress"),
+                InlineKeyboardButton("🤸 استدارة | ROTATE  🤸", callback_data="rotate")
+            ],[
+                InlineKeyboardButton("✂️ تقسيم | SPLIT  ✂️", callback_data="split"),
+                InlineKeyboardButton("🧬 دمج | MERGE  🧬", callback_data="merge")
+            ],[
+                InlineKeyboardButton("™️ ختم STAMP ™️", callback_data="stamp"),
+                InlineKeyboardButton("✏️ إعادة تسمية |RENAME ✏️", callback_data="rename")
+            ],[
+                InlineKeyboardButton("📝 مسح ضوئي | OCR 📝", callback_data="ocr"),
+                InlineKeyboardButton("🥷A4 FORMAT|تنسيق🥷", callback_data="format")
+            ],[
+                InlineKeyboardButton("🤐 ZIP 🤐", callback_data="zip"),
+                InlineKeyboardButton("🎯 TAR 🎯", callback_data="tar")
+            ],[     
+                InlineKeyboardButton("🚫 أغلق | CLOSE  🚫", callback_data="closeALL")
+            ]
+        ]
     )
-
 UPDATE_CHANNEL = Config.UPDATE_CHANNEL
 
 ONLY_GROUP_ADMIN = groupConfig.ONLY_GROUP_ADMIN
@@ -180,11 +177,11 @@ async def documents(bot, message):
                 if userStatus.status == 'banned':
                      return await message.reply_photo(
                                               photo = BANNED_PIC,
-                                              caption = "For Some Reason You Can't Use This Bot"
-                                                        "\n\nContact Bot Owner 🤐",
+                                              caption = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب\nFor Some Reason You Can't Use This Bot"
+                                                        "\nاتصل بمالك البوت 🤐\nContact Bot Owner 🤐",
                                               reply_markup = InlineKeyboardMarkup(
-                                                    [[InlineKeyboardButton("Owner 🎊",
-                                                      url="https://t.me/nabilanavab")]]
+                                                    [[InlineKeyboardButton("المالك Owner 🎊",
+                                                      url="https://t.me/ta_ja199")]]
                                               ))
             except Exception:
                 if invite_link == None:
@@ -196,26 +193,25 @@ async def documents(bot, message):
                                     caption = forceSubMsg.format(
                                             message.from_user.first_name, message.from_user.id
                                     ),
-                                    reply_markup = InlineKeyboardMarkup(
-                                         [[
-                                               InlineKeyboardButton("🌟 JOIN CHANNEL 🌟",
-                                                           url = invite_link.invite_link)
-                                         ],[
-                                               InlineKeyboardButton("Refresh ♻️",
-                                                    callback_data = "refreshAnalyse")
-                                         ]]
-                                    ))
+                    reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🌟(JOIN CHANNEL) أنظم في القناة🌟", url=invite_link.invite_link)
+                            ],[
+                                InlineKeyboardButton("تحديث | Refresh ♻️", callback_data="refresh")
+                            ]]
+                    ))
         
         if message.from_user.id in PROCESS:
             return await message.reply_to_message.reply(
-                                                       "WORK IN PROGRESS.. 🙇"
-                                                       "\nTry Again Later.. 😉"
-                                                       "\n\nRequest from: {}".format(message.from_user.mention),
+                                                       "العمل قيد التقدم ..WORK IN PROGRESS.. 🙇"
+                                                       "\nأعد المحاولة لاحقًا ..Try Again Later.. 😉"
+                                                       "\n\nالطلب من(Request from): {}".format(message.from_user.mention),
                                                        quote = True,
                                                        reply_markup = InlineKeyboardMarkup(
                                                              [[
                                                                  InlineKeyboardButton(
-                                                                          "♻️ Try Again ♻️",
+                                                                          "♻️ Try Again حاول مجددا♻️",
                                                                  callback_data = "newGrupDoc")
                                                              ]]
                                                        ))
@@ -234,7 +230,7 @@ async def documents(bot, message):
         
         if (not message.reply_to_message) or not(message.reply_to_message.document or message.reply_to_message.photo):
             return await message.reply(
-                                      "Broh Please Reply to a Document or an Image..🤧",
+                                      "الرجاء الرد على مستند أو صورة ..🤧\nPlease Reply to a Document or an Image..🤧",
                                       quote = True
                                       )
         
