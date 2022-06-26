@@ -5,7 +5,7 @@ import os
 
 
 # ❌ FEEDBACK LINK ❌ [EDITABLE]
-FEEDBACK = "https://telegram.dog/ilovepdf_bot"
+FEEDBACK = "https://t.me/i2pdfbotchannel/9?comment=13"
 
 
 # ❌ DEFAULT THUMBNAIL ❌ [EDITABLE]
