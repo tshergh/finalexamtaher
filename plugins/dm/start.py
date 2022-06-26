@@ -191,9 +191,9 @@ button = InlineKeyboardMarkup(
             InlineKeyboardButton("🌟 SOURCE CODE 🌟",
             url="https://github.com/nabilanavab/ilovepdf")
         ],[
-            InlineKeyboardButton("🤖 CHANNEL 🤖",
-                  url="https://telegram.dog/ilovepdf_bot"),
-            InlineKeyboardButton("📝 FEEDBACK 📝",
+            InlineKeyboardButton("🤖 CHANNEL قناة 🤖",
+                  url="https://telegram.dog/i2pdfbotchannel"),
+            InlineKeyboardButton("📝 FEEDBACK اكتب تعليقاً 📝",
                                         url=f"{FEEDBACK}")
         ],[
             InlineKeyboardButton("➕ ADD TO GROUP أضف للمجموعة➕",
@@ -348,7 +348,7 @@ async def start(bot, message):
                                        InlineKeyboardButton("🔍 ABOUT BOT 🔎",
                                                      url="https://telegram.dog/nabilanavab")
                                    ],[
-                                       InlineKeyboardButton("📌 SET THUMB 📌",
+                                       InlineKeyboardButton("📌 SET THUMB اختر الابهام 📌",
                                                                    callback_data="getThumb")
                                    ]]
                                ))
@@ -374,7 +374,7 @@ async def _hlp(bot, callbackQuery):
     try:
         if (callbackQuery.message.chat.type != "private") and (
             callbackQuery.from_user.id != callbackQuery.message.reply_to_message.from_user.id):
-                return callbackQuery.answer("Message Not For You.. 😏")
+                return callbackQuery.answer("الرسالة ليست لك .. \nMessage Not For You.. 😏")
         
         await callbackQuery.answer()
         await callbackQuery.edit_message_caption(
@@ -382,7 +382,7 @@ async def _hlp(bot, callbackQuery):
                         callbackQuery.from_user.first_name, callbackQuery.from_user.id
                         ),
                         reply_markup = InlineKeyboardMarkup(
-                              [[InlineKeyboardButton("« BACK «",
+                              [[InlineKeyboardButton("« BACK عودة «",
                                        callback_data = "back")]]
               ))
     except Exception as e:
@@ -396,7 +396,7 @@ async def _back(bot, callbackQuery):
     try:
         if (callbackQuery.message.chat.type != "private") and (
             callbackQuery.from_user.id != callbackQuery.message.reply_to_message.from_user.id):
-                return await callbackQuery.answer("Message Not For You.. 😏")
+                return await callbackQuery.answer("الرسالة ليست لك .. \nMessage Not For You.. 😏")
         
         await callbackQuery.answer()
         try:
@@ -421,7 +421,7 @@ async def _refresh(bot, callbackQuery):
     try:
         if (callbackQuery.message.chat.type != "private") and (
             callbackQuery.from_user.id != callbackQuery.message.reply_to_message.from_user.id):
-                return await callbackQuery.answer("Message Not For You.. 😏")
+                return await callbackQuery.answer("الرسالة ليست لك .. \nMessage Not For You.. 😏")
         
         # CHECK USER IN CHANNEL (REFRESH CALLBACK)
         userStatus = await bot.get_chat_member(
