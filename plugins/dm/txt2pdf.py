@@ -29,19 +29,21 @@ async def feedback(bot, message):
     try:
         await message.reply_chat_action("typing")
         await message.reply_text(
-            text="__Now, Please Select A Font Style »__",
+            text="__ تحويل النص الى pdf : الان, يرجى تحديد نمط الخط »__\n__Now, Please Select A Font Style »__",
             reply_markup=InlineKeyboardMarkup(
-                [[
-                    InlineKeyboardButton("Times", callback_data="font|t"),
-                    InlineKeyboardButton("Courier", callback_data="font|c")
-                ],[
-                    InlineKeyboardButton("Helvetica (Default)", callback_data="font|h")
-                ],[
-                    InlineKeyboardButton("Symbol", callback_data="font|s"),
-                    InlineKeyboardButton("Zapfdingbats", callback_data="font|z")
-                ],[
-                    InlineKeyboardButton("🚫 €lose ", callback_data="closeme")
-                ]]
+                [
+                    [
+                        InlineKeyboardButton("Times", callback_data="font|t"),
+                        InlineKeyboardButton("Courier", callback_data="font|c")
+                    ],[
+                        InlineKeyboardButton("Helvetica (Default)", callback_data="font|h")
+                    ],[
+                        InlineKeyboardButton("Symbol", callback_data="font|s"),
+                        InlineKeyboardButton("Zapfdingbats", callback_data="font|z")
+                    ],[
+                        InlineKeyboardButton("🚫  أغلق | CLOSE  🚫 ", callback_data="closeme")
+                    ]
+                ]
             )
         )
         await message.delete()
@@ -67,7 +69,7 @@ async def _txt2pdf(bot, callbackQuery):
                     InlineKeyboardButton("Landscape",
                             callback_data = f"pgSize|{font}|l")
                 ],[
-                    InlineKeyboardButton("« Back «",
+                    InlineKeyboardButton("« « عودة 🔙 « «",
                                 callback_data = f"txt2pdfBack")
                 ]]
             )
@@ -100,7 +102,7 @@ async def _txt2pdfBack(bot, callbackQuery):
                     InlineKeyboardButton("Zapfdingbats",
                                    callback_data = "font|z")
                 ],[
-                    InlineKeyboardButton("🚫 €lose 🚫",
+                    InlineKeyboardButton("🚫  أغلق | CLOSE  🚫",
                                   callback_data = "closeme")
                 ]]
             ),
@@ -117,75 +119,77 @@ pgSize = filters.create(lambda _, __, query: query.data.startswith("pgSize"))
 @ILovePDF.on_callback_query(pgSize)
 async def _pgSize(bot, callbackQuery):
     try:
-        chat_id = callbackQuery.message.chat.id
-        message_id = callbackQuery.message.message_id
-        
-        if chat_id in PROCESS:
-            return await callbackQuery.answer(
-                                             "Work in progress.. 🙇"
-                                             )
+        if callbackQuery.message.chat.id in PROCESS:
+            await callbackQuery.answer(
+                "جاري العمل Work in progress .. ⏳"
+            )
+            return
         bla, _, __ = callbackQuery.data.split("|")
-        PROCESS.append(chat_id); TXT[chat_id] = []; nabilanavab=True
+        PROCESS.append(callbackQuery.message.chat.id)
+        TXT[callbackQuery.message.chat.id] = []
+        nabilanavab=True
         while(nabilanavab):
             # 1st value will be pdf title
             askPDF = await bot.ask(
-                                  text = "__TEXT TO PDF » Now, please enter a TITLE:__\n\n"
-                                         "/exit __to cancel__\n"
-                                         "/skip __to skip__",
-                                  chat_id = chat_id,
-                                  reply_to_message_id = message_id,
-                                  filters = None
-                                  )
+                text="__النص  الى  pdf»الآن ، الرجاء إدخال عنوان :__\n\n/exit __ لالغاء__\n/skip __لتخطي__\n__TEXT TO PDF » Now, please enter a TITLE:__\n\n/exit __to cancel__\n/skip __to skip__",
+                chat_id=callbackQuery.message.chat.id,
+                reply_to_message_id=callbackQuery.message.message_id,
+                filters=None
+            )
             if askPDF.text == "/exit":
-                await askPDF.reply(
-                                  "`Process Cancelled..` 😏",
-                                  quote = True
-                                  )
-                PROCESS.remove(chat_id); del TXT[chat_id]
+                await bot.send_message(
+                    callbackQuery.message.chat.id,
+                    "`تم إلغاء العملية Process Cancelled ❌..` 😏"
+                )
+                PROCESS.remove(callbackQuery.message.chat.id)
+                del TXT[callbackQuery.message.chat.id]
                 break
             elif askPDF.text == "/skip":
-                TXT[chat_id].append(None); nabilanavab = False
+                TXT[callbackQuery.message.chat.id].append(None)
+                nabilanavab=False
             elif askPDF.text:
-                TXT[chat_id].append(f"{askPDF.text}"); nabilanavab = False
+                TXT[callbackQuery.message.chat.id].append(f"{askPDF.text}")
+                nabilanavab=False
         # nabilanavab=True ONLY IF PROCESS CANCELLED
         if nabilanavab == True:
-            PROCESS.remove(chat_id); TXT.remove(chat_id)
+            PROCESS.remove(callbackQuery.message.chat.id)
+            TXT.remove(callbackQuery.message.chat.id)
             return
-        nabilanavab = True
+        nabilanavab=True
         while(nabilanavab):
             # other value will be pdf para
             askPDF = await bot.ask(
-                                  text = f"__TEXT TO PDF » Now, please enter paragraph {len(TXT[chat_id])-1}:__"
-                                         "\n\n/exit __to cancel__\n"
-                                         "/create __to create__",
-                                  chat_id = chat_id,
-                                  reply_to_message_id = message_id,
-                                  filters = None
-                                  )
+                text=f"__TEXT TO PDF » Now, please enter paragraph__النص الى pdf » الآن ، الرجاء إدخال فقرة {len(TXT[callbackQuery.message.chat.id])-1}:__"
+                      "\n\n/exit __لإلغاء to cancel__\n/create __لأنشاء to create__",
+                chat_id=callbackQuery.message.chat.id,
+                reply_to_message_id=callbackQuery.message.message_id,
+                filters=None
+            )
             if askPDF.text == "/exit":
-                await askPDF.reply(
-                                  "`Process Cancelled..` 😏",
-                                  quote = True
-                                  )
-                PROCESS.remove(chat_id); del TXT[chat_id]
+                await bot.send_message(
+                    callbackQuery.message.chat.id,
+                    "`تم إلغاء العملية Process Cancelled ❌..` 😏"
+                )
+                PROCESS.remove(callbackQuery.message.chat.id)
+                del TXT[callbackQuery.message.chat.id]
                 break
             elif askPDF.text == "/create":
-                if TXT[chat_id][0] == None and len(TXT[chat_id]) == 1:
-                    await askPDF.reply(
-                                      "Nothing to create.. 😏",
-                                      quote = True
-                                      )
+                if TXT[callbackQuery.message.chat.id][0]==None and len(TXT[callbackQuery.message.chat.id])==1:
+                    await bot.send_message(
+                        callbackQuery.message.chat.id,
+                        "لا شي لأنشاء Nothing to create.. 😏"
+                    )
                 else:
-                    processMessage = await askPDF.reply(
-                                                       "Started Converting txt to Pdf..🎉",
-                                                       quote = True
-                                                       )
-                    nabilanavab = False
+                    processMessage = await callbackQuery.message.reply_text(
+                        "بدأ في تحويل txt إلى Pdf..", quote=True
+                    )
+                    nabilanavab=False
             elif askPDF.text:
-                TXT[chat_id].append(f"{askPDF.text}")
+                TXT[callbackQuery.message.chat.id].append(f"{askPDF.text}")
         # nabilanavab=True ONLY IF PROCESS CANCELLED
         if nabilanavab == True:
-            PROCESS.remove(chat_id); TXT.remove(chat_id)
+            PROCESS.remove(callbackQuery.message.chat.id)
+            TXT.remove(callbackQuery.message.chat.id)
             return
         
         # Started Creating PDF
@@ -233,7 +237,7 @@ async def _pgSize(bot, callbackQuery):
                                                      "upload_document"
                                                      )
         await processMessage.edit(
-                                 "`Started Uploading..` 🏋️"
+                                 "`بدأ التحميل (Started Uploading)....` 🏋️"
                                  )
         await callbackQuery.message.reply_document(
                                                   file_name = "txt2.pdf",
