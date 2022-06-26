@@ -29,24 +29,137 @@ if isMONGOexist:
 #------------------->
 #--------> LOCAL VARIABLES
 #------------------->
-
-welcomeMsg = """Hey [{}](tg://user?id={})..!!
-This bot will helps you to do many things with pdf's 🥳
-
+welcomeMsg = """مرحبا 𝓗𝓲 [{}](tg://user?id={})..!!🌝💛
+سيساعدك هذا البوت على القيام بأشياء كثيرة باستخدام ملفات pdf  📗
+𝕋𝕙𝕚𝕤 𝕓𝕠𝕥 𝕨𝕚𝕝𝕝 𝕙𝕖𝕝𝕡 𝕪𝕠𝕦 𝕕𝕠 𝕒 𝕝𝕠𝕥 𝕠𝕗 𝕥𝕙𝕚𝕟𝕘𝕤 𝕨𝕚𝕥𝕙 𝕡𝕕𝕗 𝕗𝕚𝕝𝕖𝕤 
+بعض الميزات الرئيسية هي:
+◍ `تحويل الصور إلى PDF`
+◍ `تحويل الملفات إلى pdf`
+◍ `للمزيد من معلومات اضغط : استكشاف البوت`
 Some of the main features are:
 ◍ `Convert images to PDF`
-◍ `Convert PDF to images`
-◍ `Convert files to pdf`"""
+◍ `Convert files to pdf`
+◍ `For more information, click: Explore Bot`"""
+UCantUse = "لا يمكنك استخدام هذا الروبوت لبعض الأسباب 🛑"
 
-forceSubMsg = """Wait [{}](tg://user?id={})..!!
 
-Due To The Huge Traffic Only Channel Members Can Use this Bot 🚶
+forceSubMsg = """مرحبا [{}](tg://user?id={}) 🤚🏻..!!
+يجب عليك إنضمام الى هذه القناة لكي تستطيع استخدام البوت اشترك في هذه القناة  :
+👇👇👇👇👇👇
+ @i2pdfbotchannel
+وبعدها ارجع للبوت واضغط هذا الامر /start او من ازار اضغط تحديث
+لمتابعة كافة تحديثات البوت
 
-This Means You Need To Join The Below Mentioned Channel for Using Me!
+You must join a channel in order to use the bot. Subscribe to this channel: 
+👇👇👇👇
+ @i2pdfbotchannel
+Then go back to the bot and press this command / start, or from the buttons, press update
+To follow all bot updates`
+"""
+foolRefresh = "يجيب عليك إشتراك أولا في قناة بعدها إضغط تحديث 😁 \n You must first subscribe to a channel, then click Refresh😁"
+aboutDev = """🤖𝑨𝑩𝑶𝑼𝑻 𝑩𝑶𝑻 (حول البوت)
+Name(أسم): pdf pro | تعديل على pdf
+Username(معرف): @i2pdfbot
+Version(إلإصدار): 2.5
+Channel Bot: @i2pdfbotchannel 
 
-Hit on `"♻️retry♻️"` after joining.. 😅"""
 
-helpMessage = """Hey  [{}](tg://user?id={}).!
+👤 Developer(المطور)
+Name(أسم ): 𝗧𝗔𝗛𝗘𝗥 𝗔𝗟𝗡𝗢𝗢𝗥𝗜
+Username(معرف): @ta_ja199 
+Instagram(انستا)🎛:[Click here | إضغط  هنا](https://www.instagram.com/ta_9_ja/)
+Website(موقع)🌐:موسوعة المهندس الكهربائي
+Bot Extracte zip&rar(بوت استخراج zip&rar)🌐:@unzipunrarprobot
+"""
+
+
+exploreBotEdit = """بعض الميزات الرئيسية هي:
+◍ `تحويل الصور إلى PDF`
+◍ `تحويل ملفات PDF إلى صور`
+◍ `تحويل الملفات إلى pdf`
+◍ `قم بأرسال ملف pdf  لتعديل عليه`
+تعديل على ملف pdf :
+◍ `تحويله  الى نص` 
+◍ `ضغط ملف pdf `
+◍ `تقسيم ملف pdf `
+◍` دمج ملفات pdf`
+◍` استخراج صورة من pdf`  
+◍ `ختم على  pdf `
+◍` إعادة تسمية ملف pdf
+◍` استدارة ملف pdf
+◍ `تشفير وفك تشفير  عن ملف pdf `
+◍ `تنسيق ملف  pdf `
+◍ `ارسل ملف وورد لتحويلة الى docx to pdf `
+◍ `ارسل ملف بوربيونت لتحويلة الى pptx to pdf `
+◍ `ارسل ملف الاكسيل لتحويلة الى  xlsx, xlt, xltx, xml to pdf`
+◍ `قص دمج تدوير صغط ختم تحويل الى صور وغيرها فقط ب pdf `
+◍ `ضغط ملفات pdf الى ملف مضغوط  zip`
+◍ `تحويل ملف html الى pdf`
+◍ `تحويل الرابط URL web الى pdf`
+◍ `تحويل النص الى pdf`
+
+مطور البوت: @ta_ja199
+قناة البوت channel Bot :@i2pdfbotchannel
+
+Some of the main features are:
+◍ `Convert Images to PDF`
+◍ `Convert PDFs to Images`
+◍ `Convert files to pdf`
+◍ `Send a pdf file to edit`
+Modify the pdf file:
+◍ `convert it to text`
+◍ `zip pdf file`
+◍ `split pdf file`
+◍` Merge pdf files`
+◍` Extract image from pdf`
+◍ `Stamp on pdf`
+◍` Rename pdf file
+◍` Rotate pdf file
+◍ `Encrypt and decrypt pdf file `
+◍ `pdf file format`
+◍ `Send a word document to convert it to docx to pdf `
+◍ `Send a PowerPoint file to convert it to pptx to pdf `
+◍ `Send the excel file to convert it to xlsx, xlt, xltx, xml to pdf`
+◍ `Cut, Merge, Rotate, Stamp, Stamp, Convert to Images, etc. only with PDF `
+◍ `Compress pdf files to a zip file`
+◍ `Convert html file to pdf`
+◍ `Convert web URL to pdf`
+◍ `Convert text to pdf`
+
+Bot Developer: @ta_ja199
+Bot channel: @i2pdfbotchannel
+
+[feedback|اكتب تعليقًا📋](https://t.me/engineering_electrical9/719?comment=1)"""
+
+translatorBot2Edit = """
+ترجمة pdf translator  :
+لترجمة  pdf  أولا  أرسل  ملف pdf الى البوت هنا  
+سوف تظهر  لك ازار إضغط  على :
+ ✏️ totext الى نص✏️
+وبعدها اختار:
+html 🌐
+✏️ totext الى نص✏️>>html 🌐
+وبعدها افتح ملف واضغط  ترجمة وثم مشاركة  وبعدها  طباعة 
+اذا لم تفهم جيدا تابع الشرح أدناه 👇
+
+
+[feedback|اكتب تعليقًا📋](https://t.me/engineering_electrical9/719?comment=1)"""
+
+helpMessage = """هلو Hey  [{}](tg://user?id={}).!
+بعض الميزات الرئيسية هي:
+
+- صور إلى PDF:
+     الصور إلى PDF ، ملفات [JPEG ، png ، JPG] إلى PDF ، إعادة تسمية PDF في وقت الإنشاء ، إعادة التسمية حسب الاسم
+
+- معالجة ملفات PDF:
+     PDF إلى صور ، PDF إلى JPEG ، جلب البيانات الوصفية ، دمج ملفات PDF متعددة ، تقسيم ملفات PDF إلى أجزاء ، PDF إلى (رسائل ، نص ، html ، json) ، صفحات Zip / Rar PDF ، تشفير / فك تشفير PDF ، إضافة طوابع ، OCR PDF ، A4 المادة الأساسية ، وتحويل النص إلى PDF ، والحصول على معاينة PDF ، وجلب البيانات من القنوات والمجموعات المحمية
+
+- تحويل برامج الترميز المختلفة إلى PDF
+     ~ .epub ، .fb2 ، .cbz ، إلخ [بلا حدود]
+     ~ 45 من برامج الترميز الأخرى باستخدام convertAPI [linmited]
+
+⚠️ تحذير ⚠️
+◍ هذا الروبوت مجاني تمامًا للاستخدام. لذا ، من فضلك لا ترسل بريد مزعج هنا. البريد العشوائي ممنوع منعا باتا ويؤدي إلى حظر دائم
 Some of the main features are:
 
 - Images to PDF:
@@ -63,14 +176,13 @@ Some of the main features are:
 ◍ This Bot is Completely Free to Use. So, please dont spam here. Spamming is strictly prohibited and leads to permanent ban.🚶
 """
 
-foolRefresh = "വിളച്ചിലെടുക്കല്ലേ കേട്ടോ 😐"
 
 LOG_TEXT = "#newUser @nabilanavab/ILovePDF\nID: {}\nView Profile: {}"
 LOG_TEXT_C = "#newChat @nabilanavab/ILovePDF\nID: {}\nGroup Title: {}\nTotal Users: {}\nUserNsme: {}"
 
 button = InlineKeyboardMarkup(
         [[
-            InlineKeyboardButton("📌 SET THUMB 📌",
+            InlineKeyboardButton("📌 SET THUMB ضبط الإبهام  📌",
                                  callback_data="getThumb"),
         ],[
             InlineKeyboardButton("⚠️ HELP AND RULES ⚠️",
