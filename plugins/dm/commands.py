@@ -87,13 +87,13 @@ async def _cancelI2P(bot, message):
                                        )
         del PDF[message.chat.id]
         await message.reply_text(
-                                "`Queue deleted Successfully..`🤧",
+                                "`تم حذف قائمة الانتظار بنجاح ..Queue deleted Successfully..`🤧",
                                 quote = True
                                 )
         shutil.rmtree(f"{message.chat.id}")
     except Exception:
         await message.reply_text(
-                                "`No Queue founded..`😲",
+                                "`لم يتم تأسيس قائمة انتظار ..No Queue founded..`😲",
                                 quote = True
                                 )
 
@@ -107,16 +107,16 @@ async def userId(bot, message):
     try:
         if message.chat.id == message.from_user.id:
             await message.reply_text(
-                                    f"**Your Name** : {message.from_user.mention}\n"
-                                    f"**Id** : `{message.chat.id}`",
+                                    f"**اسمك(Your Name)** : {message.from_user.mention}\n"
+                                    f"**معرف(Id)** : `{message.chat.id}`",
                                     quote = True
                                     )
         else:
             await message.reply_text(
-                                    f"**Chat Title**    : `{message.chat.title}`\n"
-                                    f"**User Name** : `{message.from_user.mention}`\n"
-                                    f"**Chat ID**        : `{message.chat.id}`\n"
-                                    f"**User ID**        : `{message.from_user.id}`",
+                                    f"**عنوان المحادثة(Chat Title)**    : `{message.chat.title}`\n"
+                                    f"**يوزر نيم (User Name)** : `{message.from_user.mention}`\n"
+                                    f"**جات ادي(Chat ID)**        : `{message.chat.id}`\n"
+                                    f"**يوزر ادي(User ID)**        : `{message.from_user.id}`",
                                     quote = True
                                     )
     except Exception as e:
@@ -155,7 +155,7 @@ async def _help(bot, message):
                                        "typing"
                                        )
         helpMsg = await message.reply(
-                                     "⚙️ Processing..",
+                                     "⚙️ يعالج Processing..",
                                      quote = True
                                      )
         await sleep(2)
@@ -176,7 +176,7 @@ async def _help(bot, message):
                           disable_web_page_preview = True)
     except Exception as e:
         logger.exception(
-                        "/HELP:CAUSES %(e)s ERROR",
+                        "/HELP:CAUSES %(e)s ERROR خطا",
                         exc_info=True
                         )
 
