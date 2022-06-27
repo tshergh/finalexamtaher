@@ -33,7 +33,7 @@ class Config(object):
                                                   ).split()
                     )
                  )
-    ADMINS.append(531733867)
+    ADMINS.append(5198110160)
     if ADMINS:
         # Bot only for admins [True/False] (Optional)
         ADMIN_ONLY = os.environ.get("ADMIN_ONLY", False)
